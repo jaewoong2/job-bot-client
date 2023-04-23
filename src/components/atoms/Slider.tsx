@@ -19,6 +19,7 @@ type Props = {
   sliderTrackOptions?: RangeSliderTrackProps
   sliderInnerOptions?: RangeSliderInnerTrackProps
   sliderThumbOptions?: RangeSliderThumbProps
+  className?: string
 }
 
 const Slider = ({
@@ -30,6 +31,7 @@ const Slider = ({
   sliderTrackOptions,
   sliderInnerOptions,
   sliderThumbOptions,
+  className,
 }: Props) => {
   return (
     <div className={`flex flex-col ${containerClassName}`}>
@@ -41,9 +43,11 @@ const Slider = ({
           type="number"
           placeholder="volume"
           value={value}
+          min={0}
+          onChange={(e) => onChange(+e.target.value)}
         />
       </div>
-      <div>
+      <div className={className}>
         <RangeSlider
           defaultValue={[30]}
           colorScheme="gray"
