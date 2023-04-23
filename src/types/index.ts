@@ -4,3 +4,8 @@ export type Star = {
   action: string
   result: string
 }
+
+export type Feedback = {
+  keyword: string
+  feedback: string
+}
