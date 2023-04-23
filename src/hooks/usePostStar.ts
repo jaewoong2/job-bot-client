@@ -12,8 +12,8 @@ type UsePostStarProps = Omit<
   'mutationFn'
 >
 
-const usePostStar = ({ ...options }: UsePostStarProps) => {
-  return useMutation(postStar, { ...options })
+const usePostStar = (temperature: number, { ...options }: UsePostStarProps) => {
+  return useMutation((star) => postStar({ temperature, ...star }), { ...options })
 }
 
 export default usePostStar

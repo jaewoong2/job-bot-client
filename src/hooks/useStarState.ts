@@ -1,8 +1,8 @@
 import { ChangeEvent, useCallback, useMemo, useState } from 'react'
 import { Star } from '@/types'
 
-export const MINIMUM_TEXT_LENGTH = 120
-export const ERROR_MINIMUM_MESSAGE = '120자의 정보가 필요해요 🥲'
+export const MINIMUM_TEXT_LENGTH = 80
+export const ERROR_MINIMUM_MESSAGE = `${MINIMUM_TEXT_LENGTH}자의 정보가 필요해요 🥲`
 export const LIMIT_TEXT_LENGTH = 240
 export const ERROR_LIMIT_MESSAGE = `최대 ${LIMIT_TEXT_LENGTH}자 까지 작성 가능 해요`
 
@@ -19,7 +19,7 @@ export const STAR = [
     key: 'task',
     label: 'Task (업무)',
     placeholder:
-      '청년의 취업 문제를 주제로 삼았고, 이를 해결 하기 위한 서비스를 구현하기로 하였습니다. 청년을 위한 서비스로 다가가기 쉽고 사용하기 좋은 UI/UX 를 구현 하기로 하였습니다.',
+      '청년의 취업 문제를 주제로 삼았고, 이를 해결 하기 위한 서비스를 구현 하기로 하였습니다. 청년을 위한 서비스로 다가가기 쉽고 사용하기 좋은 UI/UX 를 구현 하기로 하였습니다.',
     tooltip:
       '상황 설명에 이어, 그 상황에서 해결해야 할 과제나 목표를 구체적으로 기술합니다. 여기에서는 자신이 어떤 책임이나 역할을 맡았는지를 명확하게 밝혀야 합니다.',
   },
