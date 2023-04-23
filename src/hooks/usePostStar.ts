@@ -1,15 +1,19 @@
 import { postStar } from '@/api/service'
-import { useMutation } from 'react-query'
+import { Star } from '@/types'
+import { UseMutationOptions, useMutation } from 'react-query'
 
-const usePostStar = () => {
-  return useMutation(postStar, {
-    onSuccess: (data) => {
-      console.log(data)
-    },
-    onError: (error: Error) => {
-      console.error(error)
-    },
-  })
+type UsePostStarProps = Omit<
+  UseMutationOptions<
+    { role: 'assistant' | 'user' | 'system'; content: string } | undefined,
+    unknown,
+    Star,
+    unknown
+  >,
+  'mutationFn'
+>
+
+const usePostStar = ({ ...options }: UsePostStarProps) => {
+  return useMutation(postStar, { ...options })
 }
 
 export default usePostStar
