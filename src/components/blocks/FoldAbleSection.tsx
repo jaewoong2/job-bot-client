@@ -1,4 +1,4 @@
-import React, { PropsWithChildren } from 'react'
+import React, { PropsWithChildren, useEffect } from 'react'
 import { FcExpand } from 'react-icons/fc'
 import useFoldAbleActions from '@/hooks/useFoldAbleActions'
 import useFoldAbleValue from '@/hooks/useFoldAbleValue'
@@ -10,7 +10,11 @@ type Props = {
 
 const Section = ({ title, children, ...props }: Props) => {
   const { fold, isFold } = useFoldAbleValue()
-  const { toggle } = useFoldAbleActions()
+  const { toggle, show } = useFoldAbleActions()
+
+  useEffect(() => {
+    show()
+  }, [])
 
   return (
     <section {...props}>
@@ -21,7 +25,7 @@ const Section = ({ title, children, ...props }: Props) => {
       >
         <FcExpand className={fold ? '-animate-rotate-90 -rotate-90' : 'animate-rotate-0'} />
         <div className="p-1 rounded-xl text-gray-800 ">
-          <h2>{title}</h2>
+          <h2 className="text-[1.05em]">{title}</h2>
         </div>
       </button>
       <div
