@@ -17,20 +17,14 @@ module.exports = {
         },
       },
       keyframes: {
-        '-rotate-90': {
+        'fade-in-left': {
           '0%': {
-            transform: 'rotate(0deg)',
+            opacity: '0',
+            transform: 'translateX(-10px)',
           },
           '100%': {
-            transform: 'rotate(-90deg)',
-          },
-        },
-        'rotate-0': {
-          '0%': {
-            transform: 'rotate(-90deg)',
-          },
-          '100%': {
-            transform: 'rotate(0deg)',
+            opacity: '1',
+            transform: 'translateX(0)',
           },
         },
         'fade-in-down': {
@@ -57,8 +51,7 @@ module.exports = {
       animation: {
         'fade-in-down': 'fade-in-down 0.5s ease-out',
         'fade-out-up': 'fade-out-up 0.5s ease-out',
-        '-rotate-90': '-rotate-90 0.5s ease-out',
-        'rotate-0': 'rotate-0 0.5s ease-out',
+        'fade-in-left': 'fade-in-left 0.5s ease-out',
       },
       gridTemplateColumns: {
         main: '4fr 12fr 4fr',
