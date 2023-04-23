@@ -1,18 +1,9 @@
 import React, { useCallback } from 'react'
 import { RxDoubleArrowDown } from 'react-icons/rx'
-import useFoldAbleActions from '@/hooks/useFoldAbleActions'
 import { LIMIT_TEXT_LENGTH, STAR } from '@/hooks/useStarState'
 import { Star } from '@/types'
 import { UseMutateFunction } from 'react-query'
 import TextArea from '../../atoms/TextArea'
-
-/**
- * 요건
- * 0. www.domain.com/write?category=star
- * 1. 화살표를 누르면 다음 것이 뜸 (애니메이션 O), 마지막 일때 작성하기 버튼 보여줌
- * 2. 각 항목 180자
- * 3. 작성중 이면 막기
- */
 
 type Props = {
   star: Star
@@ -49,13 +40,10 @@ const StarMain = ({
   handleSubmit,
   mutate,
 }: Props) => {
-  const { hide } = useFoldAbleActions()
-
   const submit = useCallback(
     (e: React.FormEvent<HTMLFormElement>) => {
       e.preventDefault()
       handleSubmit(mutate)
-      hide()
     },
     [handleSubmit]
   )
