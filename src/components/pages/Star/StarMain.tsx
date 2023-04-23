@@ -1,7 +1,9 @@
-import React, { ChangeEvent, useCallback, useState } from 'react'
+import React, { useCallback } from 'react'
 import { RxDoubleArrowDown } from 'react-icons/rx'
 import useFoldAbleActions from '@/hooks/useFoldAbleActions'
+import { LIMIT_TEXT_LENGTH, STAR } from '@/hooks/useStarState'
 import { Star } from '@/types'
+import { UseMutateFunction } from 'react-query'
 import TextArea from '../../atoms/TextArea'
 
 /**
@@ -12,79 +14,88 @@ import TextArea from '../../atoms/TextArea'
  * 3. 작성중 이면 막기
  */
 
-const STAR = [
-  { key: 'situation', label: 'Situation (상황)' },
-  { key: 'task', label: 'Task (업무)' },
-  { key: 'action', label: 'Action (행동)' },
-  { key: 'result', label: 'Result (결과)' },
-] as const
-
-const LIMIT_TEXT_LENGTH = 240
-
 type Props = {
-  postStar: (star: Star) => void
+  star: Star
+  step: number
+  isError: boolean
+  errorStatus: {
+    situation: string | null
+    task: string | null
+    action: string | null
+    result: string | null
+  }
+  handleChangeStar: (key: keyof Star) => (e: React.ChangeEvent<HTMLTextAreaElement>) => void
+  handleClickNextStep: (index: number) => () => void
+  handleSubmit: (callback: <T extends Star>(args: T) => void) => void
+  mutate: UseMutateFunction<
+    | {
+        role: 'assistant' | 'user' | 'system'
+        content: string
+      }
+    | undefined,
+    unknown,
+    Star,
+    unknown
+  >
 }
 
-const StarMain = ({ postStar }: Props) => {
+const StarMain = ({
+  star,
+  step,
+  isError,
+  errorStatus,
+  handleChangeStar,
+  handleClickNextStep,
+  handleSubmit,
+  mutate,
+}: Props) => {
   const { hide } = useFoldAbleActions()
-  const [star, setStar] = useState<Star>({ action: '', result: '', situation: '', task: '' })
-  const [step, setStep] = useState(0)
-  const [errorStatus] = useState<{ message: string; key: string } | null>(null)
 
-  const handleChangeStar = useCallback(
-    (key: keyof Star) => (e: ChangeEvent<HTMLTextAreaElement>) => {
-      setStar((prev) => {
-        return { ...prev, [key]: e.target.value }
-      })
+  const submit = useCallback(
+    (e: React.FormEvent<HTMLFormElement>) => {
+      e.preventDefault()
+      handleSubmit(mutate)
+      hide()
     },
-    []
+    [handleSubmit]
   )
-
-  const handleClickNextStep = useCallback(
-    (index: number) => () => {
-      setStep((prev) => Math.max(index + 1, prev))
-      setTimeout(() => {
-        window.scrollTo({ behavior: 'smooth', top: document.body.clientHeight })
-      }, 0)
-    },
-    []
-  )
-
-  const handleSubmit = useCallback(() => {
-    postStar(star)
-    hide()
-  }, [hide, star])
 
   return (
-    <form onSubmit={handleSubmit} id="star-form">
+    <form onSubmit={submit} id="star-form" className="pb-10">
       {STAR.map(
-        ({ key, label }, index) =>
+        ({ key, label, tooltip, placeholder }, index) =>
           index <= step && (
             <div className="p-3 pb-0" key={key}>
               <TextArea
                 label={label}
+                placeholder={placeholder}
                 resize="none"
                 minH="200px"
-                className="border-primary"
+                borderColor={errorStatus[key] ? 'red.300' : 'gray.300'}
                 value={star[key]}
+                tooltip={tooltip}
                 onChange={handleChangeStar(key)}
               />
               <div
                 className={`w-full flex justify-between px-3 text-sm ${
-                  errorStatus?.key === key ? 'text-red-500' : 'text-gray-500'
+                  errorStatus[key] ? 'text-red-400' : 'text-gray-500'
                 }`}
               >
-                <div className="text-red-500">
-                  {errorStatus?.key === key && errorStatus.message}
+                <div>
+                  {errorStatus[key] && (
+                    <span className="text-red-500 animate-fade-in-left">{errorStatus[key]}</span>
+                  )}
                 </div>
-                <div className={star[key].length > LIMIT_TEXT_LENGTH ? 'text-red-500' : ''}>
+                <div className={star[key].length > LIMIT_TEXT_LENGTH ? 'text-red-400' : ''}>
                   {star[key].length} / {LIMIT_TEXT_LENGTH}
                 </div>
               </div>
               {index <= step && index < STAR.length - 1 && (
                 <div className="p-3">
-                  <button
+                  <a
+                    href={`#${STAR[index + 1].key}`}
                     type="button"
+                    id={STAR[index + 1].key}
                     className="w-[100%] mx-auto flex justify-center my-5 cursor-pointer py-2 rounded-xl hover:bg-sky-50"
                     onClick={handleClickNextStep(index)}
                   >
@@ -95,7 +106,7 @@ const StarMain = ({ postStar }: Props) => {
                     >
                       <RxDoubleArrowDown className="text-2xl text-gray-800" />
                     </span>
-                  </button>
+                  </a>
                 </div>
               )}
             </div>
@@ -104,9 +115,10 @@ const StarMain = ({ postStar }: Props) => {
       {step === STAR.length - 1 && (
         <div className="w-full flex justify-center my-5 cursor-pointer px-5">
           <button
-            onClick={() => handleSubmit()}
-            type="button"
-            className="w-full py-3 text-gray-600 bg-sky-50 rounded-xl"
+            type="submit"
+            className={`w-full py-3 hover:bg-sky-100 text-gray-600 bg-sky-50 rounded-xl ${
+              isError ? 'bg-red-50 border-red-100 border text-rose-400' : ''
+            }`}
             form="star-form"
           >
             작성하기
