@@ -35,3 +35,13 @@
       2. right sidebar
       3. 요청 시 로딩 + 모달
 6. Mobile 고려하기
+
+---
+
+hmmm...
+
+1. useMemo vs 그냥
+2. redux vs props-drilling
+   1. 지금은 props-driliing 사용
+      1. 아직 서비스를 키우지 않았음
+3.
