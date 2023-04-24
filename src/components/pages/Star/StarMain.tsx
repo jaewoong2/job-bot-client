@@ -62,6 +62,7 @@ const StarMain = ({
                 borderColor={errorStatus[key] ? 'red.300' : 'gray.300'}
                 value={star[key]}
                 tooltip={tooltip}
+                containerClassName="bg-darkBg-900"
                 onChange={handleChangeStar(key)}
               />
               <div
