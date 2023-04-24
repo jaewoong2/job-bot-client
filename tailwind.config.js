@@ -1,8 +1,20 @@
 module.exports = {
+  darkMode: 'class',
   content: ['./src/**/*.{js,jsx,ts,tsx}'],
   theme: {
     extend: {
       colors: {
+        darkBg: {
+          100: '#585a5d',
+          200: '#3f4245',
+          300: '#282a2d',
+          400: '#202124',
+          500: '#1e1f21',
+          600: '#1c1d1f',
+          700: '#1a1b1d',
+          800: '#18191b',
+          900: '#161718',
+        },
         primary: {
           100: 'rgb(185, 228, 244)',
           200: 'rgb(165, 219, 244)',

@@ -1,3 +1,5 @@
+import Menu from '@/components/atoms/Menu'
+import Option from '@/components/atoms/Option'
 import TextArea from '@/components/atoms/TextArea'
 import useBeforeUnload from '@/hooks/useBeforeUnload'
 import useFeedbackState, {
@@ -63,7 +65,12 @@ const FeedbackMain = ({
               className="min-w-[180px]"
               options={OPTIONS}
               value={keyword}
+              isMulti={false}
               onChange={(event) => setKeyword(event!)}
+              components={{
+                Option: Option.normal,
+                Menu,
+              }}
             />
           </div>
           <TextArea

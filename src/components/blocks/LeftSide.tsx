@@ -3,6 +3,7 @@ import Select from 'react-select'
 import { useLocation } from 'react-router-dom'
 import Slider from '../atoms/Slider'
 import Option from '../atoms/Option'
+import Menu from '../atoms/Menu'
 
 type OptionValues = 'write' | 'feedback'
 type OptionType = {
@@ -34,7 +35,7 @@ const LeftSide = ({ temperature, setTemperature, isOnMenuBox }: Props) => {
         isOnMenuBox ? 'flex' : 'lg:flex hidden fixed top-16 left-0 max-w-xs'
       } z-50`}
     >
-      <section className="border w-full bg-white">
+      <section className="w-full bg-white dark:bg-darkBg-300 border dark:border-gray-500">
         <ul className="flex flex-col">
           <li className=" p-2 rounded-2xl">
             <div className="flex flex-col">
@@ -52,11 +53,12 @@ const LeftSide = ({ temperature, setTemperature, isOnMenuBox }: Props) => {
                 isSearchable={false}
                 components={{
                   Option,
+                  Menu,
                 }}
               />
             </div>
           </li>
-          <li className="p-2 rounded-2xl">
+          <li className="p-2 rounded-2xl ">
             <Slider
               className="w-[95%] mx-auto"
               label="창조성"
@@ -68,7 +70,7 @@ const LeftSide = ({ temperature, setTemperature, isOnMenuBox }: Props) => {
         </ul>
       </section>
       <div
-        className={`w-full border aspect-square flex justify-center items-center bg-slate-50 ${
+        className={`w-full border aspect-square flex justify-center items-center bg-slate-50 dark:bg-darkBg-300 dark:border-gray-500 ${
           isOnMenuBox ? 'aspect-[7]' : ''
         }`}
       >

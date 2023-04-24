@@ -12,7 +12,7 @@
    1. post -> get methods 변경하기
    2.
 4. Front
-   1. post -> get methods 변경하기
+   1. dark 모드 구현!
    2. Router
       1. 자소서 첨삭
       2. 자소서 작성
