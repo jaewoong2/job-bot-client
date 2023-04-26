@@ -1,7 +1,6 @@
-import Menu from '@/components/atoms/Menu'
-import Option from '@/components/atoms/Option'
 import TextArea from '@/components/atoms/TextArea'
 import useBeforeUnload from '@/hooks/useBeforeUnload'
+import Select from '@/components/atoms/Select'
 import useFeedbackState, {
   LABEL,
   LIMIT_TEXT_LENGTH,
@@ -13,7 +12,6 @@ import { Feedback } from '@/types'
 import { Text, Tooltip } from '@chakra-ui/react'
 import React, { useCallback } from 'react'
 import { UseMutateFunction } from 'react-query'
-import Select from 'react-select'
 
 type Props = {
   mutate: UseMutateFunction<
@@ -65,12 +63,8 @@ const FeedbackMain = ({
               className="min-w-[180px]"
               options={OPTIONS}
               value={keyword}
+              onChange={(e) => setKeyword(e!)}
               isMulti={false}
-              onChange={(event) => setKeyword(event!)}
-              components={{
-                Option: Option.normal,
-                Menu,
-              }}
             />
           </div>
           <TextArea
@@ -79,6 +73,9 @@ const FeedbackMain = ({
             resize="none"
             minH="400px"
             borderColor={errorMessage ? 'red.300' : 'gray.300'}
+            _dark={{
+              borderColor: errorMessage ? 'red.300' : 'gray.500',
+            }}
             value={feedback}
             tooltip={TOOLTIP}
             onChange={handleChangeFeedback}
@@ -106,7 +103,7 @@ const FeedbackMain = ({
             errorMessage
               ? 'bg-red-50 border-red-100 border text-rose-400'
               : 'bg-sky-50 hover:bg-sky-100'
-          }`}
+          } dark:bg-darkBg-300 dark:text-white dark:hover:bg-darkBg-200`}
           form="feedback-form"
         >
           피드백 받기
