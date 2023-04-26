@@ -1,4 +1,5 @@
 @import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.5/dist/web/static/pretendard-dynamic-subset.css');
+@import url('https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/5.0.0/github-markdown-light.min.css');
 
 @tailwind base;
 @tailwind components;
@@ -22,4 +23,3 @@ body {
   --tw-bg-opacity: 1;
   background-color: rgb(250 250 251 / var(--tw-bg-opacity));
 }
-
