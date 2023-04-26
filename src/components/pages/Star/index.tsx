@@ -40,7 +40,7 @@ const Star = ({ temperature, ...state }: Props) => {
         title: '네트워크 에러.',
         description: '네트워크 장애가 발생 했습니다. 다시 시도해주세요.',
         status: 'error',
-        duration: 9000,
+        duration: 4000,
         isClosable: true,
       })
     },
@@ -70,7 +70,7 @@ const Star = ({ temperature, ...state }: Props) => {
         <Route path="*" element={<Component404 />} />
       </Routes>
       <ModalBase {...rest} title="자소서 생성중...">
-        <div className="w-full border aspect-square flex justify-center items-center bg-slate-50">
+        <div className="w-full border aspect-square flex justify-center items-center bg-slate-50 dark:bg-darkBg-300">
           광고박스
         </div>
       </ModalBase>

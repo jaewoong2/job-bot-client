@@ -60,9 +60,11 @@ const StarMain = ({
                 resize="none"
                 minH="200px"
                 borderColor={errorStatus[key] ? 'red.300' : 'gray.300'}
+                _dark={{
+                  borderColor: errorStatus[key] ? 'red.300' : 'gray.500',
+                }}
                 value={star[key]}
                 tooltip={tooltip}
-                containerClassName="bg-darkBg-900"
                 onChange={handleChangeStar(key)}
               />
               <div
@@ -85,7 +87,7 @@ const StarMain = ({
                     href={`#${STAR[index + 1].key}`}
                     type="button"
                     id={STAR[index + 1].key}
-                    className="w-[100%] mx-auto flex justify-center my-5 cursor-pointer py-2 rounded-xl hover:bg-sky-50"
+                    className="w-[100%] mx-auto flex justify-center my-5 cursor-pointer py-2 rounded-xl hover:bg-sky-50 dark:bg-darkBg-400 dark:hover:bg-darkBg-300"
                     onClick={handleClickNextStep(index)}
                   >
                     <span
@@ -93,7 +95,7 @@ const StarMain = ({
                         step === index ? 'animate-bounce' : ''
                       }`}
                     >
-                      <RxDoubleArrowDown className="text-2xl text-gray-800" />
+                      <RxDoubleArrowDown className="text-2xl text-gray-800 dark:text-white" />
                     </span>
                   </a>
                 </div>
@@ -105,7 +107,7 @@ const StarMain = ({
         <div className="w-full flex justify-center my-5 cursor-pointer px-5">
           <button
             type="submit"
-            className={`w-full py-3 hover:bg-sky-100 text-gray-600 bg-sky-50 rounded-xl ${
+            className={`w-full py-3 hover:bg-sky-100 text-gray-600 bg-sky-50 rounded-xl dark:bg-darkBg-300 dark:hover:bg-darkBg-200 dark:text-white ${
               isError ? 'bg-red-50 border-red-100 border text-rose-400' : ''
             }`}
             form="star-form"
