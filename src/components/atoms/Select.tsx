@@ -1,26 +1,25 @@
 import React from 'react'
-import { Select as ChakraSelect, SelectProps } from '@chakra-ui/react'
+import ReactSelect, { Props, PropsValue } from 'react-select'
+import Option from './Option'
+import Menu from './Menu'
+import SingleValue from './SingleValue'
+import Control from './Control'
 
-type Props = {
-  label?: string
-  containerClassName?: string
-  options?: React.DetailedHTMLProps<
-    React.OptionHTMLAttributes<HTMLOptionElement>,
-    HTMLOptionElement
-  >[]
-} & SelectProps
+type SelectProps = Props<PropsValue<Props['value'] | any>, false>
 
-const Select = ({ containerClassName, className, children, label, options, ...props }: Props) => {
+const Select = ({ components, ...props }: SelectProps) => {
   return (
-    <div className={`flex flex-col ${containerClassName}`}>
-      <span className="py-1 font-[300]">{label}</span>
-      <ChakraSelect placeholder="종류" className={`font-[300] ${className}`} {...props}>
-        {children}
-        {options?.map(({ children: child, ...rest }) => (
-          <option {...rest}>{child ?? rest.value}</option>
-        ))}
-      </ChakraSelect>
-    </div>
+    <ReactSelect
+      className="min-w-[180px]"
+      components={{
+        Option: Option.normal,
+        Menu,
+        SingleValue,
+        Control,
+        ...components,
+      }}
+      {...props}
+    />
   )
 }
 

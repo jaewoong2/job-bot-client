@@ -1,9 +1,8 @@
 import React, { useCallback } from 'react'
-import Select from 'react-select'
 import { useLocation } from 'react-router-dom'
+import Select from '../atoms/Select'
 import Slider from '../atoms/Slider'
 import Option from '../atoms/Option'
-import Menu from '../atoms/Menu'
 
 type OptionValues = 'write' | 'feedback'
 type OptionType = {
@@ -49,11 +48,11 @@ const LeftSide = ({ temperature, setTemperature, isOnMenuBox }: Props) => {
                   ]
                 }
                 options={options}
+                isMulti={false}
                 className="z-50"
                 isSearchable={false}
                 components={{
                   Option,
-                  Menu,
                 }}
               />
             </div>
@@ -71,7 +70,7 @@ const LeftSide = ({ temperature, setTemperature, isOnMenuBox }: Props) => {
       </section>
       <div
         className={`w-full border aspect-square flex justify-center items-center bg-slate-50 dark:bg-darkBg-300 dark:border-gray-500 ${
-          isOnMenuBox ? 'aspect-[7]' : ''
+          isOnMenuBox ? 'aspect-[7/1]' : ''
         }`}
       >
         광고박스

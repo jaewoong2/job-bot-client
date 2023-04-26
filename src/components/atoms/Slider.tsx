@@ -38,7 +38,7 @@ const Slider = ({
       <div className="w-full flex justify-between">
         <span className="py-1 font-[300]">{label}</span>
         <input
-          className="px-3 w-[80px] border rounded-md text-sm dark:text-black"
+          className="px-3 w-[80px] border rounded-md text-sm"
           id="input"
           type="number"
           placeholder="volume"

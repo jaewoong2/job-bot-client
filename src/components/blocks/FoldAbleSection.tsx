@@ -20,11 +20,11 @@ const Section = ({ title, children, ...props }: Props) => {
     <section {...props}>
       <button
         type="button"
-        className="ml-4 px-2 rounded-xl w-fit flex items-center gap-2 hover:bg-slate-100"
+        className="ml-4 px-2 rounded-xl w-fit flex items-center gap-2 hover:bg-slate-100 dark:hover:bg-darkBg-300"
         onClick={toggle}
       >
         <FcExpand className={fold ? '-animate-rotate-90 -rotate-90' : 'animate-rotate-0'} />
-        <div className="p-1 rounded-xl text-gray-800 ">
+        <div className="p-1 rounded-xl text-gray-800  dark:text-white">
           <h2 className="text-[1.05em]">{title}</h2>
         </div>
       </button>

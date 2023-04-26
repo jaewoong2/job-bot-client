@@ -1,36 +1,39 @@
-import React, { useEffect, useState } from 'react'
+import { ColorMode } from '@chakra-ui/react'
+import React, { useEffect } from 'react'
 
-const ThemeButton = () => {
-  const [theme, setTheme] = useState<'dark' | 'light'>('light')
+type Props = {
+  colorMode: ColorMode
+  setColorMode: (value: any) => void
+}
 
+const ThemeButton = ({ colorMode, setColorMode }: Props) => {
   useEffect(() => {
     if (
       localStorage.theme === 'dark' ||
       (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)
     ) {
       document.documentElement.classList.add('dark')
-      setTheme('dark')
+      setColorMode('dark')
     } else {
       document.documentElement.classList.remove('dark')
-      setTheme('light')
+      setColorMode('light')
     }
   }, [])
 
   function setDarkTheme() {
     document.documentElement.classList.add('dark')
     localStorage.theme = 'dark'
-    setTheme('dark')
+    setColorMode('dark')
   }
 
   function setLightTheme() {
     document.documentElement.classList.remove('dark')
-    setTheme('light')
+    setColorMode('light')
     localStorage.theme = 'light'
   }
 
   function onThemeSwitcherItemClick() {
-    console.log('hi')
-    if (theme !== 'dark') {
+    if (colorMode !== 'dark') {
       setDarkTheme()
     } else {
       setLightTheme()
@@ -43,21 +46,21 @@ const ThemeButton = () => {
       (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)
     ) {
       document.documentElement.classList.add('dark')
-      setTheme('dark')
+      setColorMode('dark')
     } else {
       document.documentElement.classList.remove('dark')
-      setTheme('light')
+      setColorMode('light')
     }
   }, [])
 
   return (
     <button
-      data-theme={theme}
+      data-theme={colorMode}
       type="button"
       onClick={onThemeSwitcherItemClick}
       className="text-gray-500 dark:text-gray-400"
     >
-      {theme === 'light' ? (
+      {colorMode === 'light' ? (
         <svg
           className="w-5 h-5"
           fill="currentColor"

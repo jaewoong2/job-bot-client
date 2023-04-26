@@ -15,6 +15,7 @@ type Props = {
   title?: string
   closeButton?: string
   footer?: React.ReactNode
+  classsName?: string
 } & UseDisclosureProps
 
 const ModalBase = ({
@@ -24,6 +25,7 @@ const ModalBase = ({
   onClose,
   isOpen,
   footer,
+  classsName,
 }: PropsWithChildren<Props>) => {
   if (!(onClose && isOpen)) {
     return <div />
@@ -32,11 +34,11 @@ const ModalBase = ({
   return (
     <Modal onClose={onClose} isOpen={isOpen} isCentered>
       <ModalOverlay />
-      <ModalContent>
-        {title && <ModalHeader>{title}</ModalHeader>}
+      <ModalContent className={`dark:bg-darkBg-400 ${classsName}`}>
+        {title && <ModalHeader className="bg-darkBg-400">{title}</ModalHeader>}
         <ModalCloseButton />
-        <ModalBody>{children}</ModalBody>
-        <ModalFooter>
+        <ModalBody className={`dark:bg-darkBg-400 ${classsName}`}>{children}</ModalBody>
+        <ModalFooter className={`dark:bg-darkBg-400 ${classsName}`}>
           {footer}
           <Button onClick={onClose}>{closeButton}</Button>
         </ModalFooter>
