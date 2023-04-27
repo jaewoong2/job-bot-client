@@ -8,17 +8,27 @@ type Props = {
   imgSrc: string
   to?: string
   buttonName?: string
+  imgClassName?: string
 } & LinkProps
 
-const Card = ({ title, imgSrc, to, children, buttonName, ...rest }: PropsWithChildren<Props>) => {
+const Card = ({
+  title,
+  imgSrc,
+  to,
+  className,
+  children,
+  buttonName,
+  imgClassName,
+  ...rest
+}: PropsWithChildren<Props>) => {
   return (
     <Link
       to={to ?? title}
-      className="flex flex-col border max-h-[350px] h-full aspect-square rounded-xl w-full cursor-pointer shadow-md hover:bg-slate-50 dark:shadow-darkBg-300 dark:bg-darkBg-300 hover:dark:bg-darkBg-400 hover:-translate-y-1 transition-transform"
+      className={`flex flex-col border max-w-xs max-h-[350px] h-full aspect-square rounded-xl w-full cursor-pointer shadow-md hover:bg-slate-50 dark:shadow-darkBg-300 dark:bg-darkBg-300 hover:dark:bg-darkBg-400 hover:-translate-y-1 transition-transform ${className}`}
       aria-label={`카드: ${title}`}
       {...rest}
     >
-      <figure className="rounded-t-xl w-full h-auto overflow-hidden ">
+      <figure className={`rounded-t-xl w-full h-auto overflow-hidden ${imgClassName}`}>
         <img className="w-full h-full" src={imgSrc} alt={`카드 이미지: ${title}`} />
       </figure>
       <div className="p-3 flex flex-col flex-1 gap-2">
