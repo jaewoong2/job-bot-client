@@ -12,7 +12,7 @@
    1. post -> get methods 변경하기
    2.
 4. Front
-   1. dark 모드 구현!
+   1. ~~dark 모드 구현!~~ 
    2. Router
       1. 자소서 첨삭
       2. 자소서 작성
@@ -27,6 +27,7 @@
       3. Textarea 에 빨간색 helper message, boder color
    6. api Success | Error Handling
       1. Toast Message
+   7. 리엑트 헬멧
 5. 광고 붙이기
    1. google adsense
       1. 이거는 클라이언트 & 서버 다 붙이면
