@@ -11,7 +11,7 @@ const Articles = () => {
         ({ ReactComponent, attributes }) =>
           attributes.title === decodeURIComponent(params.article!) && (
             <div
-              className="dark:bg-darkBg-400 dark:text-white p-6 markdown-body"
+              className="dark:bg-darkBg-400 dark:text-white p-6 markdown-body max-w-6xl mx-auto"
               key={attributes.title}
             >
               <div className="border-b mb-5">
