@@ -43,12 +43,12 @@ const App = () => {
       {/* Head Navigation */}
       <header className="w-full border-b h-12 flex items-center justify-between px-3 top-0 fixed bg-white bg-opacity-40 backdrop-blur-sm z-50 dark:bg-darkBg-400 dark:border-gray-500">
         {/* LINK 로 바꿔야함 */}
-        <Link to="/">
+        <Link to="/" className="hover:bg-slate-100 dark:hover:bg-darkBg-200 p-2 rounded-xl">
           <div className="flex gap-3 items-center">
             <div className="w-6">
               <img className="max-w-full w-full" src="/favicon.ico" alt="KAP BOT" />
             </div>
-            <h1>KAP BOT - 경험 기반 지원서 작성 봇</h1>
+            <h1>잡봇 - 경험 기반 지원서 작성 봇</h1>
           </div>
         </Link>
         <ThemeButton {...{ colorMode, setColorMode }} />
@@ -95,6 +95,20 @@ const App = () => {
           광고박스
         </div>
       </aside>
+
+      <footer className="w-full bg-darkBg-800 min-h-[200px]">
+        <div aria-label="footer-main" className="container mx-auto p-5 text-gray-300">
+          <div className="w-full border grid grid-cols-3">
+            <div>
+              <h2 className="font-bold text-xl px-2">Contact</h2>
+              <ul>
+                <li className="px-3 text-sm text-white">Email</li>
+              </ul>
+            </div>
+          </div>
+          <p className="text-sm font-semibold">@All Rights Reserved @jaewoong2</p>
+        </div>
+      </footer>
       <ModalBase />
     </div>
   )
