@@ -1,6 +1,7 @@
 import React, { MouseEvent, TouchEvent, useCallback, useState } from 'react'
 import { Link, Route, Routes } from 'react-router-dom'
 import { useColorMode } from '@chakra-ui/react'
+import { RxGithubLogo } from 'react-icons/rx'
 import Star from './components/pages/Star'
 import LeftSide from './components/blocks/LeftSide'
 import Feedback from './components/pages/feedback'
@@ -39,7 +40,7 @@ const App = () => {
   )
 
   return (
-    <div className="w-full min-h-full dark:bg-darkBg-400 dark:text-white">
+    <div className="w-full min-h-full dark:bg-darkBg-400 dark:text-white h-fit">
       {/* Head Navigation */}
       <header className="w-full border-b h-12 flex items-center justify-between px-3 top-0 fixed bg-white bg-opacity-40 backdrop-blur-sm z-50 dark:bg-darkBg-400 dark:border-gray-500">
         {/* LINK 로 바꿔야함 */}
@@ -78,7 +79,7 @@ const App = () => {
       {/* Left Side Bar */}
       <LeftSide temperature={temperature} setTemperature={setTemperature} />
       {/* Main */}
-      <main className="lg:w-[calc(100%-550px)] min-h-full lg:ml-[320px] w-full pt-16">
+      <main className="lg:w-[calc(100%-550px)] min-h-[calc(100vh)] lg:ml-[320px] w-full h-fit pt-16">
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/articles/:article" element={<Articles />} />
@@ -90,25 +91,32 @@ const App = () => {
         </Routes>
       </main>
       {/* Right SideBar */}
-      <aside className="w-full h-fit max-lg:px-6 lg:max-w-[250px] lg:fixed lg:right-0 lg:top-16 lg:px-6 lg:z-50 relative">
-        <div className="aspect-[4/1] mx-auto w-full border lg:aspect-square flex justify-center items-center bg-slate-50 dark:bg-darkBg-300 ">
-          광고박스
-        </div>
-      </aside>
+      <aside className="w-full h-fit max-lg:px-6 lg:max-w-[250px] lg:fixed lg:right-0 lg:top-16 lg:px-6 lg:z-50 relative" />
 
-      <footer className="w-full bg-darkBg-800 min-h-[200px]">
-        <div aria-label="footer-main" className="container mx-auto p-5 text-gray-300">
-          <div className="w-full border grid grid-cols-3">
+      {/* Footer */}
+      <footer className="w-full dark:bg-darkBg-600 min-h-[200px] bg-slate-50">
+        <div
+          aria-label="footer-main"
+          className="container max-w-6xl mx-auto p-5 dark:text-gray-300"
+        >
+          <div className="w-full grid grid-cols-3">
             <div>
-              <h2 className="font-bold text-xl px-2">Contact</h2>
+              <h2 className="font-bold text-xl">Contact</h2>
               <ul>
-                <li className="px-3 text-sm text-white">Email</li>
+                <li className="text-sm dark:text-white py-1">Email</li>
+                <li className="text-sm dark:text-white py-1">
+                  <div className="flex items-center gap-2">
+                    <RxGithubLogo />
+                    <span>@jaewoong2</span>
+                  </div>
+                </li>
               </ul>
             </div>
           </div>
-          <p className="text-sm font-semibold">@All Rights Reserved @jaewoong2</p>
+          <p className="mt-10 text-sm font-semibold">@All Rights Reserved @jaewoong2</p>
         </div>
       </footer>
+
       <ModalBase />
     </div>
   )

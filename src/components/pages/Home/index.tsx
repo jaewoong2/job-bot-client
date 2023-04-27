@@ -35,21 +35,18 @@ const Home = () => {
           <h2>꿀팁</h2>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 mb-10 max-w-6xl w-full gap-5">
-          {[...articles.articles, ...articles.articles, ...articles.articles].map(
-            ({ attributes }) => (
-              <div className="flex">
-                <Card
-                  key={attributes.title}
-                  title={attributes.title}
-                  imgSrc={attributes.img}
-                  imgClassName="min-h-[100px]"
-                  to={`/articles/${encodeURIComponent(attributes.title)}`}
-                >
-                  {`${attributes.description.slice(0, 21)}...`}
-                </Card>
-              </div>
-            )
-          )}
+          {articles.articles.map(({ attributes }, i) => (
+            <div key={`${attributes.title}-${+i}`} className="flex">
+              <Card
+                title={attributes.title}
+                imgSrc={attributes.img}
+                imgClassName="min-h-[100px]"
+                to={`/articles/${encodeURIComponent(attributes.title)}`}
+              >
+                {`${attributes.description.slice(0, 21)}...`}
+              </Card>
+            </div>
+          ))}
         </div>
       </div>
     </section>

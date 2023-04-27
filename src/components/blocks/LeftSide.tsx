@@ -34,9 +34,9 @@ const LeftSide = ({ temperature, setTemperature, isOnMenuBox }: Props) => {
         isOnMenuBox ? 'flex' : 'lg:flex hidden fixed top-16 left-0 max-w-xs'
       } z-50`}
     >
-      <section className="w-full bg-white dark:bg-darkBg-300 border dark:border-gray-500">
-        <ul className="flex flex-col">
-          <li className=" p-2 rounded-2xl">
+      <section className="w-full bg-white dark:bg-darkBg-300 border rounded-md dark:border-gray-500">
+        <ul className="flex flex-col gap-5 pb-10">
+          <li className="p-2 rounded-2xl">
             <div className="flex flex-col">
               <span className="py-1 font-[300]">어떤 것을 도와 드릴까요?</span>
               <Select
@@ -57,7 +57,7 @@ const LeftSide = ({ temperature, setTemperature, isOnMenuBox }: Props) => {
               />
             </div>
           </li>
-          <li className="p-2 rounded-2xl ">
+          <li className="p-2 rounded-2xl">
             <Slider
               className="w-[95%] mx-auto"
               label="창조성"
@@ -68,13 +68,6 @@ const LeftSide = ({ temperature, setTemperature, isOnMenuBox }: Props) => {
           </li>
         </ul>
       </section>
-      <div
-        className={`w-full border aspect-square flex justify-center items-center bg-slate-50 dark:bg-darkBg-300 dark:border-gray-500 ${
-          isOnMenuBox ? 'aspect-[7/1]' : ''
-        }`}
-      >
-        광고박스
-      </div>
     </aside>
   )
 }
