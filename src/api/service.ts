@@ -7,7 +7,7 @@ export const postStar = async (star: Star & { temperature: number }) => {
     const response = await instance.post<{
       role: 'assistant' | 'user' | 'system'
       content: string
-    }>('/openai/star', star)
+    }>('/star', star)
 
     if (response.status > 299) {
       throw new AxiosError('Unknwon Error...')
@@ -29,7 +29,7 @@ export const postFeedback = async (star: Feedback & { temperature: number }) => 
     const response = await instance.post<{
       role: 'assistant' | 'user' | 'system'
       content: string
-    }>('/openai/feedback', star)
+    }>('/feedback', star)
 
     if (response.status > 299) {
       throw new AxiosError('Unknwon Error...')

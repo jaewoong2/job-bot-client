@@ -31,7 +31,6 @@ const Feedback = ({ temperature, ...state }: Props) => {
   const { data, mutate, isLoading, isError, error } = usePostFeedback(temperature, {
     onMutate: () => {
       navigation('result')
-      onOpen()
     },
     onSuccess: () => {},
     onError: () => {

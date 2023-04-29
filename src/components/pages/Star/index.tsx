@@ -32,7 +32,6 @@ const Star = ({ temperature, ...state }: Props) => {
   const { data, mutate, isLoading } = usePostStar(temperature, {
     onMutate: () => {
       navigation('result')
-      onOpen()
     },
     onSuccess: () => {},
     onError: () => {

@@ -1,7 +1,7 @@
 import axios, { AxiosError, AxiosRequestConfig, AxiosResponse } from 'axios'
 
 const instance = axios.create({
-  baseURL: import.meta.env.DEV ? 'http://localhost:3000/' : '',
+  baseURL: import.meta.env.DEV ? 'http://localhost:3000/dev' : import.meta.env.VITE_ENDPOINT_URL,
   headers: {
     'Content-Type': 'application/json',
   },

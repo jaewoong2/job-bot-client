@@ -1,5 +1,5 @@
-import { Button } from '@chakra-ui/react'
 import React, { PropsWithChildren } from 'react'
+import { Button } from '@chakra-ui/react'
 import { RxArrowRight } from 'react-icons/rx'
 import { Link, LinkProps } from 'react-router-dom'
 
@@ -28,8 +28,10 @@ const Card = ({
       aria-label={`카드: ${title}`}
       {...rest}
     >
-      <figure className={`rounded-t-xl w-full h-auto overflow-hidden ${imgClassName}`}>
-        <img className="w-full h-full" src={imgSrc} alt={`카드 이미지: ${title}`} />
+      <figure
+        className={`rounded-t-xl w-full flex items-center bg-slate-200 h-auto overflow-hidden ${imgClassName}`}
+      >
+        <img className="" src={imgSrc} alt={`카드 이미지: ${title}`} />
       </figure>
       <div className="p-3 flex flex-col flex-1 gap-2">
         <h2 className="text-[1.1em] font-semibold">{title}</h2>
