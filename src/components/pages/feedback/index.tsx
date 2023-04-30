@@ -1,7 +1,6 @@
 import React from 'react'
 import FoldAbleSection from '@/components/blocks/FoldAbleSection'
-import { Button, useDisclosure, useToast } from '@chakra-ui/react'
-import ModalBase from '@/components/blocks/ModaBase'
+import { Button, useToast } from '@chakra-ui/react'
 import { Link, Route, Routes, useNavigate } from 'react-router-dom'
 import usePostFeedback from '@/hooks/usePostFeedback'
 import useFeedbackState from '@/hooks/useFeedbackState'
@@ -27,7 +26,6 @@ const Component404 = () => {
 const Feedback = ({ temperature, ...state }: Props) => {
   const toast = useToast()
   const navigation = useNavigate()
-  const { onOpen, ...rest } = useDisclosure()
   const { data, mutate, isLoading, isError, error } = usePostFeedback(temperature, {
     onMutate: () => {
       navigation('result')
@@ -45,37 +43,30 @@ const Feedback = ({ temperature, ...state }: Props) => {
   })
 
   return (
-    <>
-      <Routes>
-        <Route
-          path="/"
-          element={
-            <FoldAbleSection title="지원서 피드백">
-              <FeedbackMain mutate={mutate} {...state} />
-            </FoldAbleSection>
-          }
-        />
-        <Route
-          path="/result"
-          element={
-            <FoldAbleSection title="결과">
-              <FeedbackResult
-                erorrMessage={error?.message}
-                content={data?.content}
-                isLoading={isLoading}
-                isError={isError}
-              />
-            </FoldAbleSection>
-          }
-        />
-        <Route path="*" element={<Component404 />} />
-      </Routes>
-      <ModalBase {...rest} title="자소서 생성중...">
-        <div className="w-full border aspect-square flex justify-center items-center bg-slate-50">
-          광고박스
-        </div>
-      </ModalBase>
-    </>
+    <Routes>
+      <Route
+        path="/"
+        element={
+          <FoldAbleSection title="지원서 피드백">
+            <FeedbackMain mutate={mutate} {...state} />
+          </FoldAbleSection>
+        }
+      />
+      <Route
+        path="/result"
+        element={
+          <FoldAbleSection title="결과">
+            <FeedbackResult
+              erorrMessage={error?.message}
+              content={data?.content}
+              isLoading={isLoading}
+              isError={isError}
+            />
+          </FoldAbleSection>
+        }
+      />
+      <Route path="*" element={<Component404 />} />
+    </Routes>
   )
 }
 

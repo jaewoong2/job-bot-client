@@ -27,21 +27,23 @@ const useFeedbackState = () => {
     setFeedback(e.target.value)
   }, [])
 
-  const handleSubmitFeedback: React.FormEventHandler<HTMLFormElement> = useCallback(
-    (e) => {
-      e.preventDefault()
-      if (feedback.length > LIMIT_TEXT_LENGTH) {
-        setMessage(`최대 ${LIMIT_TEXT_LENGTH}자 까지만 작성 가능 해요 🥲`)
-        return
-      }
+  const handleSubmitFeedback = useCallback(
+    (e: React.FormEvent<HTMLFormElement>) =>
+      (callback: <T extends { feedback: string; keyword: string }>(args: T) => void) => {
+        e.preventDefault()
+        if (feedback.length > LIMIT_TEXT_LENGTH) {
+          setMessage(`최대 ${LIMIT_TEXT_LENGTH}자 까지만 작성 가능 해요 🥲`)
+          return
+        }
 
-      if (feedback.length < MINIMUM_TEXT_LENGTH) {
-        setMessage(`${MINIMUM_TEXT_LENGTH - feedback.length}자 더 작성 부탁 드려요`)
-        return
-      }
+        if (feedback.length < MINIMUM_TEXT_LENGTH) {
+          setMessage(`${MINIMUM_TEXT_LENGTH - feedback.length}자 더 작성 부탁 드려요`)
+          return
+        }
 
-      setMessage(null)
-    },
+        setMessage(null)
+        callback({ feedback, keyword: keyword.value })
+      },
     [feedback, keyword]
   )
 

@@ -6,19 +6,21 @@ import eslint from 'vite-plugin-eslint'
 import * as path from 'path'
 import { plugin, Mode } from 'vite-plugin-markdown'
 
-export default defineConfig({
-  plugins: [react(), tsconfigPaths(), eslint(), plugin({ mode: [Mode.REACT] })],
-  esbuild: {
-    logOverride: { 'this-is-undefined-in-esm': 'silent' },
-  },
-  server: {
-    watch: {
-      usePolling: true,
+export default () => {
+  return defineConfig({
+    plugins: [react(), tsconfigPaths(), eslint(), plugin({ mode: [Mode.REACT] })],
+    esbuild: {
+      logOverride: { 'this-is-undefined-in-esm': 'silent' },
     },
-  },
-  resolve: {
-    alias: {
-      '@': path.resolve(__dirname, './src'),
+    server: {
+      watch: {
+        usePolling: true,
+      },
     },
-  },
-})
+    resolve: {
+      alias: {
+        '@': path.resolve(__dirname, './src'),
+      },
+    },
+  })
+}

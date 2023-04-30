@@ -1,8 +1,7 @@
 import React from 'react'
 import FoldAbleSection from '@/components/blocks/FoldAbleSection'
 import usePostStar from '@/hooks/usePostStar'
-import { Button, useDisclosure, useToast } from '@chakra-ui/react'
-import ModalBase from '@/components/blocks/ModaBase'
+import { Button, useToast } from '@chakra-ui/react'
 import { Link, Route, Routes, useNavigate } from 'react-router-dom'
 import useStarState from '@/hooks/useStarState'
 import useBeforeUnload from '@/hooks/useBeforeUnload'
@@ -28,7 +27,6 @@ type Props = {
 const Star = ({ temperature, ...state }: Props) => {
   const toast = useToast()
   const navigation = useNavigate()
-  const { onOpen, ...rest } = useDisclosure()
   const { data, mutate, isLoading } = usePostStar(temperature, {
     onMutate: () => {
       navigation('result')
@@ -48,32 +46,25 @@ const Star = ({ temperature, ...state }: Props) => {
   useBeforeUnload(Object.values(state.star).filter((star) => star.length > 0).length > 0)
 
   return (
-    <>
-      <Routes>
-        <Route
-          path="/"
-          element={
-            <FoldAbleSection title="STAR 작성">
-              <StarMain {...state} mutate={mutate} />
-            </FoldAbleSection>
-          }
-        />
-        <Route
-          path="/result"
-          element={
-            <FoldAbleSection title="결과">
-              <StarResult content={data?.content} isLoading={isLoading} />
-            </FoldAbleSection>
-          }
-        />
-        <Route path="*" element={<Component404 />} />
-      </Routes>
-      <ModalBase {...rest} title="자소서 생성중...">
-        <div className="w-full border aspect-square flex justify-center items-center bg-slate-50 dark:bg-darkBg-300">
-          광고박스
-        </div>
-      </ModalBase>
-    </>
+    <Routes>
+      <Route
+        path="/"
+        element={
+          <FoldAbleSection title="STAR 작성">
+            <StarMain {...state} mutate={mutate} />
+          </FoldAbleSection>
+        }
+      />
+      <Route
+        path="/result"
+        element={
+          <FoldAbleSection title="결과">
+            <StarResult content={data?.content} isLoading={isLoading} />
+          </FoldAbleSection>
+        }
+      />
+      <Route path="*" element={<Component404 />} />
+    </Routes>
   )
 }
 

@@ -2,47 +2,13 @@
 
 ## Todos
 
-1. 도메인 사기
-2. 서버 호스팅...?
-   1. AWS Lambda + API Gateway
-   2. 저렴 호스팅 (heroku, verce)
-   3. Google Colud Platform
-      1. Code Run
-3. Back
-   1. post -> get methods 변경하기
-   2.
-4. Front
-   1. ~~dark 모드 구현!~~ 
-   2. Router
-      1. 자소서 첨삭
-      2. 자소서 작성
-         1. STAR
-         2. 3C4P
-   3. Modal
-   4. 로딩 겁나 긴거 해결
-      1. 서버 붙이면 더 로딩 길듯
-   5. Input Error Handling
-      1. 180자 제한
-      2. 작성 안된 거 있으면 erorr 보여주기
-      3. Textarea 에 빨간색 helper message, boder color
-   6. api Success | Error Handling
-      1. Toast Message
-   7. 리엑트 헬멧
-5. 광고 붙이기
-   1. google adsense
-      1. 이거는 클라이언트 & 서버 다 붙이면
-   2. 위치
-      1. left sidebar
-      2. right sidebar
-      3. 요청 시 로딩 + 모달
-6. Mobile 고려하기
+1. AWS API GATEWAY CORS 설정하기 (시급)
 
----
+   1. 지금은 \* 임.. job-bot.site 에서만 요청 받을 수 있도록 설정 해야함
 
-hmmm...
-
-1. useMemo vs 그냥
-2. redux vs props-drilling
-   1. 지금은 props-driliing 사용
-      1. 아직 서비스를 키우지 않았음
-3.
+2. 컨텐츠 많이 만들기
+3. 프롬프트 많이 만들기
+4. 코드 스플리팅
+5. S3 에셋 폴더 만들기 -> ROUTE53 / CloudFront 으로 설정 해야할까..?? 이건 잘 모르겠다
+6. Github actions 설정하기 (CI/CD)
+7. Branch 분리하기 (드디어!!!)

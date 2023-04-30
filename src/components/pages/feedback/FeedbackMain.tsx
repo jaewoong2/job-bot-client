@@ -38,8 +38,7 @@ const FeedbackMain = ({
   const sumbit: React.FormEventHandler<HTMLFormElement> = useCallback(
     (e) => {
       // data fetch
-      handleSubmitFeedback(e)
-      mutate({ feedback, keyword: keyword.value })
+      handleSubmitFeedback(e)(mutate)
     },
     [feedback, keyword]
   )
