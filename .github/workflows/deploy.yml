@@ -34,7 +34,7 @@ jobs:
           aws s3 cp \
           --recursive \
           --region ap-northeast-2 \
-          dist s3://dalda.shop
+          dist s3://job-bot.site
       - name: invalidate
         env:
           PATHS: './index.html'
