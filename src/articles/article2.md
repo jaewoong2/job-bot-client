@@ -1,7 +1,7 @@
 ---
 title: 잡봇 어떻게 사용 할까?
 description: 잡봇(job-bot.site)의 사용법에 대해서 알려드림!
-img: '/articles/Title.png'
+img: '/favicon.ico'
 created: '2023-04-28'
 author: '@jaewoong2'
 ---
@@ -71,3 +71,5 @@ STAR은 Situation, Task, Action, Result의 약자로, 각각 상황, 당신이 �
 ![Untitled](/articles/Untitled%209.png)
 
 ### 모두 즐거운 Job-bot 하세요!
+
+<a href="/">목록</a>
