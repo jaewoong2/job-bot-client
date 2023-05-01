@@ -1,24 +1,13 @@
 import React from 'react'
 import FoldAbleSection from '@/components/blocks/FoldAbleSection'
 import usePostStar from '@/hooks/usePostStar'
-import { Button, useToast } from '@chakra-ui/react'
-import { Link, Route, Routes, useNavigate } from 'react-router-dom'
+import { useToast } from '@chakra-ui/react'
+import { Route, Routes, useNavigate } from 'react-router-dom'
 import useStarState from '@/hooks/useStarState'
 import useBeforeUnload from '@/hooks/useBeforeUnload'
 import StarMain from './StarMain'
 import StarResult from './StarResult'
-
-const Component404 = () => {
-  return (
-    <div className="w-full h-full min-h-[calc(100vh-80px)] flex justify-center items-center flex-col">
-      <p className="text-red-400 text-lg">잘못된 접근이에요 😭</p>
-      <Link className="p-3 hover:text-blue-500 text-blue-400 flex flex-col gap-1" to="/write">
-        경함 작성 하러가기
-        <Button>이동</Button>
-      </Link>
-    </div>
-  )
-}
+import Error from '../Error'
 
 type Props = {
   temperature: number
@@ -63,7 +52,7 @@ const Star = ({ temperature, ...state }: Props) => {
           </FoldAbleSection>
         }
       />
-      <Route path="*" element={<Component404 />} />
+      <Route path="*" element={<Error to="write">경험 작성 하러가기</Error>} />
     </Routes>
   )
 }

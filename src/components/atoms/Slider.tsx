@@ -34,12 +34,13 @@ const Slider = ({
   className,
 }: Props) => {
   return (
-    <div className={`flex flex-col ${containerClassName}`}>
+    <div className={`flex flex-col ${containerClassName}`} aria-label={label}>
       <div className="w-full flex justify-between">
         <span className="py-1 font-[300]">{label}</span>
         <input
           className="px-3 w-[80px] border rounded-md text-sm"
           id="input"
+          aria-label={label}
           type="number"
           placeholder="volume"
           value={value}

@@ -6,12 +6,14 @@ type Props = {
   title?: string
   description?: string
   name?: string
+  image?: string
 }
 
-export const SEO = ({ title, description, name, children }: PropsWithChildren<Props>) => {
+export const SEO = ({ title, description, name, children, image }: PropsWithChildren<Props>) => {
   return (
     <>
       <Helmet>
+        <link rel="canonical" href="https://www.mysite.com/shop" />
         <title>{title ? `잡봇 | ${title}` : '잡봇 | 지원서 봇'} </title>
         <meta
           name="description"
@@ -33,7 +35,13 @@ export const SEO = ({ title, description, name, children }: PropsWithChildren<Pr
           name="twitter:description"
           content={description ?? '지원서 작성을 도와주는 웹사이트 입니다.'}
         />
-        <meta property="og:image" content="https://job-bot.site/jobbothumbnail.png" />
+        <meta
+          property="og:image"
+          content={
+            image ??
+            'https://ywnfqdpcmgtllkshgzsl.supabase.co/storage/v1/object/public/image/jobbotthubmnail.png'
+          }
+        />
         <meta property="og:site_name" content="https://job-bot.site" />
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
