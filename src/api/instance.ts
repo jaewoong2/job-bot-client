@@ -1,9 +1,10 @@
 import axios, { AxiosError, AxiosRequestConfig, AxiosResponse } from 'axios'
 
 const instance = axios.create({
-  baseURL: import.meta.env.DEV ? 'http://localhost:3000/dev/' : import.meta.env.VITE_ENDPOINT_URL,
+  baseURL: import.meta.env.DEV ? 'http://localhost:3000/' : import.meta.env.VITE_ENDPOINT_URL,
   headers: {
     'Content-Type': 'application/json',
+    Authorization: `Bearer ${import.meta.env.VITE_SUPABASE_JWT}`,
   },
 })
 
