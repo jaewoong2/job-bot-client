@@ -25,9 +25,15 @@
   <priority>1.0</priority>
 </url>
 <url>
-  <loc>https://example.com/articles</loc>
-  <lastmod>2023-04-29</lastmod>
-  <changefreq>daily</changefreq>
+  <loc>https://example.com/잡봇%20어떻게%20사용%20할까%3F</loc>
+  <lastmod>2023-04-28</lastmod>
+  <changefreq>monthly</changefreq>
+  <priority>0.5</priority>
+</url>
+<url>
+  <loc>https://example.com/자기소개서는%20어떻게%20작성%20하는게%20좋을까%3F</loc>
+  <lastmod>2023-04-26</lastmod>
+  <changefreq>monthly</changefreq>
   <priority>0.5</priority>
 </url>
 </urlset>
