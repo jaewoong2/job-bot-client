@@ -21,7 +21,7 @@ const FeedbackResult = ({ content, isLoading, isError, erorrMessage }: Props) =>
   return (
     <div className="mt-5 px-6 relative">
       {isLoading && (
-        <div className="border rounded-md w-full h-full min-h-[400px] p-3 py-8 flex justify-center bg-slate-100 items-center animate-pulse font-light">
+        <div className="dark:bg-darkBg-300 dark:border-gray-500 border rounded-md w-full h-full min-h-[400px] p-3 py-8 flex justify-center bg-slate-100 items-center animate-pulse font-light">
           답변 생성 중..
         </div>
       )}

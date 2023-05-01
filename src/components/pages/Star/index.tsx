@@ -16,7 +16,7 @@ type Props = {
 const Star = ({ temperature, ...state }: Props) => {
   const toast = useToast()
   const navigation = useNavigate()
-  const { data, mutate, isLoading } = usePostStar(temperature, {
+  const { data, mutate, isLoading, isError, error } = usePostStar(temperature, {
     onMutate: () => {
       navigation('result')
     },
@@ -48,7 +48,12 @@ const Star = ({ temperature, ...state }: Props) => {
         path="/result"
         element={
           <FoldAbleSection title="결과">
-            <StarResult content={data?.content} isLoading={isLoading} />
+            <StarResult
+              content={data?.content}
+              isLoading={isLoading}
+              isError={isError}
+              erorrMessage={error?.message}
+            />
           </FoldAbleSection>
         }
       />
