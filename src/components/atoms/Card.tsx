@@ -29,13 +29,12 @@ const Card = ({
       {...rest}
     >
       <figure
-        className={`rounded-t-xl w-full flex items-center bg-slate-200 h-auto overflow-hidden ${imgClassName}`}
+        className={`rounded-t-xl w-auto flex items-center bg-slate-200 h-[150px] overflow-hidden ${imgClassName}`}
       >
         <img className="" src={imgSrc} alt={`카드 이미지: ${title}`} />
       </figure>
       <div className="p-3 flex flex-col flex-1 gap-2">
-        <h2 className="text-[1.1em] font-semibold">{title}</h2>
-        {children}
+        <h2 className="text-[1.1em] font-semibold text-ellipsis">{title}</h2>
       </div>
       <div className="w-full flex justify-end p-3">
         <Button className="flex gap-2">
