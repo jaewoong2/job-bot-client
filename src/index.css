@@ -23,3 +23,22 @@ body {
   --tw-bg-opacity: 1;
   background-color: rgb(250 250 251 / var(--tw-bg-opacity));
 }
+
+
+.coupang-iframe {
+  position: fixed;
+  right: 30px;
+  top: 100px;
+  width: 150px;
+}
+
+@media screen and (max-width: 1240px) {
+  .coupang-iframe {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    right: 0;
+    top: 0;
+    border-radius: 8px;
+  }
+}
