@@ -4,7 +4,7 @@ import Select from '../atoms/Select'
 import Slider from '../atoms/Slider'
 import Option from '../atoms/Option'
 
-type OptionValues = 'write' | 'feedback'
+type OptionValues = 'write' | 'feedback' | 'pnf'
 type OptionType = {
   value: OptionValues
   label: string
@@ -18,6 +18,7 @@ type Props = {
 
 const options: OptionType[] = [
   { value: 'write', label: '경험 작성' },
+  { value: 'pnf', label: '지원서 평가' },
   { value: 'feedback', label: '지원서 피드백' },
 ]
 
