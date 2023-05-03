@@ -87,13 +87,13 @@ const App = () => {
       )}
       {/* Left Side Bar */}
       <LeftSide temperature={temperature} setTemperature={setTemperature} />
+
       {/* Main */}
       <main className="lg:w-[calc(100%-550px)] min-h-[calc(100vh)] lg:ml-[320px] w-full h-fit pt-16">
         <Router temperature={temperature} />
       </main>
       {/* Right SideBar */}
       <aside className="w-full h-fit max-lg:px-6 lg:max-w-[250px] lg:fixed lg:right-0 lg:top-16 lg:px-6 lg:z-50 relative" />
-
       {/* Footer */}
       <Footer />
       <ModalBase />
