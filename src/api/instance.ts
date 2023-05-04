@@ -8,7 +8,7 @@ const HEADERS = {
 const instance = axios.create({
   baseURL: import.meta.env.DEV
     ? 'http://localhost:54321/functions/v1/'
-    : import.meta.env.VITE_ENDPOINT_URL,
+    : 'https://ywnfqdpcmgtllkshgzsl.functions.supabase.co/',
   headers: import.meta.env.DEV ? { 'Content-Type': 'application/json' } : HEADERS,
 })
 
