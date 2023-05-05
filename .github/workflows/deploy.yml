@@ -15,6 +15,7 @@ jobs:
       - name: Cache node modules # node modules 캐싱
         uses: actions/cache@v1
         with:
+          node-version: '16'
           path: node_modules
           key: ${{ runner.OS }}-master-build-${{ hashFiles('**/yarn.lock') }}
           restore-keys: |
@@ -22,6 +23,14 @@ jobs:
             ${{ runner.OS }}-
       - name: Install Dependencies # node module install
         run: yarn
+
+      - name: Generate Environment Variables File for Production
+        run: |
+          echo "VITE_ENDPOINT_URL=$VITE_ENDPOINT_URL" >> .env
+          echo "VITE_SUPABASE_JWT=$VITE_SUPABASE_JWT" >> .env
+        env:
+          REACT_APP_DOMAIN: ${{ secrets.VITE_ENDPOINT_URL }}
+          REACT_APP_DEBUG: ${{ secrets.VITE_SUPABASE_JWT }}
 
       - name: Build # project build
         run: yarn build
