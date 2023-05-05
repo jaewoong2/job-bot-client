@@ -29,8 +29,8 @@ jobs:
           echo "VITE_ENDPOINT_URL=$VITE_ENDPOINT_URL" >> .env
           echo "VITE_SUPABASE_JWT=$VITE_SUPABASE_JWT" >> .env
         env:
-          REACT_APP_DOMAIN: ${{ secrets.VITE_ENDPOINT_URL }}
-          REACT_APP_DEBUG: ${{ secrets.VITE_SUPABASE_JWT }}
+          VITE_ENDPOINT_URL: ${{ secrets.VITE_ENDPOINT_URL }}
+          VITE_SUPABASE_JWT: ${{ secrets.VITE_SUPABASE_JWT }}
 
       - name: Build # project build
         run: yarn build
