@@ -29,6 +29,8 @@ const LeftSide = ({ temperature, setTemperature, isOnMenuBox }: Props) => {
     setTemperature(value)
   }, [])
 
+  if (navigation.pathname === '/') return null
+
   return (
     <aside
       className={`pl-2 w-full h-full flex-col gap-5 ${

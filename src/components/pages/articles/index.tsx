@@ -1,8 +1,8 @@
 import React, { useMemo } from 'react'
 import { useParams } from 'react-router-dom'
-import articles from '@/articles'
 import { SEO } from '@/components/blocks/SEO'
-import Error from '../Error'
+import articles from '@/markdown'
+import Home from './Home'
 
 const Articles = () => {
   const params = useParams<{ article: string }>()
@@ -37,10 +37,10 @@ const Articles = () => {
       )
     }
 
-    return <Error>다양한 컨텐츠 즐기러 가기</Error>
-  }, [articles])
+    return null
+  }, [articles, params])
 
-  return <div>{article}</div>
+  return <div>{article ?? <Home />}</div>
 }
 
 export default Articles

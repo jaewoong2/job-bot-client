@@ -1,4 +1,4 @@
-import { Star, Feedback } from '@/types'
+import { Star, Feedback, Pnf, Copilot } from '@/types'
 import { AxiosError } from 'axios'
 import instance from './instance'
 
@@ -46,12 +46,34 @@ export const postFeedback = async (star: Feedback & { temperature: number }) => 
   }
 }
 
-export const postPnf = async (data: { content: string; job: string; temperature: number }) => {
+export const postPnf = async (data: Pnf & { temperature: number }) => {
   try {
     const response = await instance.post<{
       role: 'assistant' | 'user' | 'system'
       content: string
     }>('/pnf', data)
+
+    if (response.status > 299) {
+      throw new AxiosError('Unknwon Error...')
+    }
+
+    return response.data
+  } catch (err) {
+    if (err instanceof AxiosError) {
+      console.error(err.message)
+      throw err
+    }
+    console.error('Something Wrong...')
+    throw err
+  }
+}
+
+export const postCopilot = async (data: Copilot & { temperature: number }) => {
+  try {
+    const response = await instance.post<{
+      role: 'assistant' | 'user' | 'system'
+      content: string
+    }>('/copilot', data)
 
     if (response.status > 299) {
       throw new AxiosError('Unknwon Error...')

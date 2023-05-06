@@ -44,7 +44,7 @@ const PnfMain = ({
   useBeforeUnload(content.length > 0)
 
   return (
-    <FoldAbleSection title="이 지원서는 통과 할까?">
+    <FoldAbleSection title="이 지원서는 몇점 일까?  ">
       <form onSubmit={sumbit} id="feedback-form">
         <div className="w-full px-6 pt-3 xl:w-[200px] text-sm">
           <Text className="py-2 whitespace-nowrap flex items-center gap-1">

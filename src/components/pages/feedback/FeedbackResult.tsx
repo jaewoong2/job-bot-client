@@ -26,7 +26,7 @@ const FeedbackResult = ({ content, isLoading, isError, erorrMessage }: Props) =>
         </div>
       )}
       {!isError && !isLoading && (
-        <div className="border rounded-md w-full h-full min-h-[400px] p-3 py-8 dark:bg-darkBg-300 dark:border-gray-500">
+        <div className="border rounded-md w-full h-full min-h-[400px] p-3 py-8 dark:bg-darkBg-300 dark:border-gray-500 whitespace-pre-wrap">
           {content}
         </div>
       )}
