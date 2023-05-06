@@ -15,7 +15,6 @@ jobs:
       - name: Cache node modules # node modules 캐싱
         uses: actions/cache@v1
         with:
-          node-version: '16'
           path: node_modules
           key: ${{ runner.OS }}-master-build-${{ hashFiles('**/yarn.lock') }}
           restore-keys: |
