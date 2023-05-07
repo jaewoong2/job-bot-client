@@ -1,5 +1,5 @@
 import React, { MouseEvent, TouchEvent, useCallback, useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 import { useColorMode } from '@chakra-ui/react'
 import { RxHamburgerMenu } from 'react-icons/rx'
 import LeftSide from './components/blocks/LeftSide'
@@ -9,6 +9,7 @@ import Footer from './components/atoms/Footer'
 import Router from './components/Routes/Router'
 
 const App = () => {
+  const location = useLocation()
   const { colorMode, setColorMode } = useColorMode()
   const [temperature, setTemperature] = useState(50)
 
@@ -89,7 +90,13 @@ const App = () => {
       <LeftSide temperature={temperature} setTemperature={setTemperature} />
 
       {/* Main */}
-      <main className="lg:w-[calc(100%-550px)] min-h-[calc(100vh)] lg:ml-[320px] w-full h-fit pt-16">
+      <main
+        className={`min-h-[calc(100vh)]  w-full h-fit pt-16 ${
+          location.pathname === '/'
+            ? 'flex justify-center'
+            : 'lg:ml-[320px] lg:w-[calc(100%-550px)] '
+        }`}
+      >
         <Router temperature={temperature} />
       </main>
       {/* Right SideBar */}

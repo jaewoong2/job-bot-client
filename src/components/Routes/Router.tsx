@@ -3,8 +3,10 @@ import { Routes, Route } from 'react-router-dom'
 import useStarState from '@/hooks/useStarState'
 import useFeedbackState from '@/hooks/useFeedbackState'
 import usePnfState from '@/hooks/usePnfState'
+import useCopilotState from '@/hooks/useCopilotState'
 import { SEO } from '../blocks/SEO'
 import Error from '../pages/Error'
+import Copilot from '../pages/Copilot'
 
 const Home = React.lazy(() => import('../pages/Home'))
 const Star = React.lazy(() => import('../pages/Star'))
@@ -20,20 +22,20 @@ const Router = ({ temperature }: Props) => {
   const starState = useStarState()
   const feedbackState = useFeedbackState()
   const pnfState = usePnfState()
+  const copliotState = useCopilotState()
 
   return (
     <Suspense fallback={<div>로딩중...</div>}>
+      <SEO />
       <Routes>
-        <Route
-          path="/"
-          element={
-            <SEO>
-              <Home />
-            </SEO>
-          }
-        />
+        <Route path="/" element={<Home />} />
+        <Route path="/articles" element={<Articles />} />
         <Route path="/articles/:article" element={<Articles />} />
         <Route path="/pnf/*" element={<Pnf {...pnfState} temperature={temperature} />} />
+        <Route
+          path="/copilot/*"
+          element={<Copilot temperature={temperature} {...copliotState} />}
+        />
         <Route path="/write/*" element={<Star temperature={temperature} {...starState} />} />
         <Route
           path="/feedback/*"

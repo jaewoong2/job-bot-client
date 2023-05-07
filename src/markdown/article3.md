@@ -1,7 +1,7 @@
 ---
 title: 1분 자기소개 준비 하기
 description: 1분 자기소개 작성은 어떻게 준비 하는게 좋을까?
-img: '/articles/1min.png'
+img: '/assets/1min.png'
 created: '2023-04-28'
 author: '@CHATGPT'
 ---

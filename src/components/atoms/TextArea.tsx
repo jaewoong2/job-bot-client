@@ -1,4 +1,4 @@
-import { Textarea as ChakraTextArea, TextareaProps, Tooltip } from '@chakra-ui/react'
+import { Button, Textarea as ChakraTextArea, TextareaProps, Tooltip } from '@chakra-ui/react'
 import React from 'react'
 
 type Props = {
@@ -6,6 +6,7 @@ type Props = {
   containerClassName?: string
   labelClassName?: string
   tooltip?: string
+  isLoading?: boolean
 } & TextareaProps
 
 const TextArea = ({
@@ -14,13 +15,18 @@ const TextArea = ({
   labelClassName,
   children,
   tooltip,
+  isLoading,
   ...props
 }: Props) => {
   return (
     <div className="p-3">
       <div className="flex gap-1 items-center pb-2">
         <h4 className="text-base font-semibold" id={label}>
-          {label}
+          {isLoading ? (
+            <Button border="none" bg="transparent" _hover={{}} isLoading size="sm" />
+          ) : (
+            label
+          )}
         </h4>
         {tooltip && (
           <Tooltip label={tooltip} placement="auto-start">

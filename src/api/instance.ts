@@ -1,13 +1,13 @@
 import axios, { AxiosError, AxiosRequestConfig, AxiosResponse } from 'axios'
 
+const HEADERS = {
+  'Content-Type': 'application/json',
+  Authorization: `Bearer ${import.meta.env.VITE_SUPABASE_JWT}`,
+}
+
 const instance = axios.create({
-  baseURL: import.meta.env.DEV
-    ? 'http://localhost:54321/functions/v1/'
-    : import.meta.env.VITE_ENDPOINT_URL,
-  headers: {
-    'Content-Type': 'application/json',
-    Authorization: `Bearer ${import.meta.env.VITE_SUPABASE_JWT}`,
-  },
+  baseURL: import.meta.env.DEV ? '/api/' : import.meta.env.VITE_ENDPOINT_URL,
+  headers: import.meta.env.DEV ? { 'Content-Type': 'application/json' } : HEADERS,
 })
 
 // Add a request interceptor
