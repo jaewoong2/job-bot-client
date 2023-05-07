@@ -10,7 +10,7 @@ import useDebounce from '@/hooks/useDebounce'
 import { PLACEHOLDER } from '@/hooks/useFeedbackState'
 import { Copilot } from '@/types'
 import { AddIcon, InfoIcon, QuestionIcon } from '@chakra-ui/icons'
-import { Input, Tag, TagLabel, TagLeftIcon, Text } from '@chakra-ui/react'
+import { Icon, Input, Tag, TagLabel, TagLeftIcon, Text } from '@chakra-ui/react'
 import { AxiosError } from 'axios'
 import React, { useCallback, useEffect, useState } from 'react'
 import { FcDislike, FcLike } from 'react-icons/fc'
@@ -142,11 +142,10 @@ const CopilotMain = ({
             onClick={() => setIsActive((prev) => !prev)}
             className="rounded-xl p-3 dark:shadow-inner dark:shadow-darkBg-200 shadow-xl cursor-pointer"
           >
-            {isActive ? <FcLike /> : <FcDislike />}
+            <Icon as={isActive ? FcLike : FcDislike} />
           </button>
           <span className="text-xs flex gap-2 items-center text-gray-400">
-            <InfoIcon />
-            코파일럿 {!isActive ? '정지' : '실행 중'}
+            <InfoIcon />봇 {!isActive ? '정지' : '실행 중'}
           </span>
         </div>
         <TextArea

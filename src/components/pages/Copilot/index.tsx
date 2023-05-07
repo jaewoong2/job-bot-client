@@ -30,7 +30,7 @@ const Copilot = ({ temperature, ...state }: Props) => {
       <Route
         path="/"
         element={
-          <FoldAbleSection title="코파일럿">
+          <FoldAbleSection title="지원서 봇">
             <CopilotMain
               reset={reset}
               mutate={mutate}
@@ -42,7 +42,7 @@ const Copilot = ({ temperature, ...state }: Props) => {
           </FoldAbleSection>
         }
       />
-      <Route path="*" element={<Error to="write">피드백 받으러가기</Error>} />
+      <Route path="*" element={<Error to="copilot">지원서 봇</Error>} />
     </Routes>
   )
 }
