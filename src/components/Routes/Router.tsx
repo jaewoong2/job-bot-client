@@ -6,13 +6,13 @@ import usePnfState from '@/hooks/usePnfState'
 import useCopilotState from '@/hooks/useCopilotState'
 import { SEO } from '../blocks/SEO'
 import Error from '../pages/Error'
-import Copilot from '../pages/Copilot'
 
 const Home = React.lazy(() => import('../pages/Home'))
 const Star = React.lazy(() => import('../pages/Star'))
 const Articles = React.lazy(() => import('../pages/articles'))
 const Feedback = React.lazy(() => import('../pages/feedback'))
 const Pnf = React.lazy(() => import('../pages/Pnf'))
+const Copilot = React.lazy(() => import('../pages/Copilot'))
 
 type Props = {
   temperature: number
