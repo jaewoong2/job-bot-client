@@ -1,6 +1,6 @@
 import React from 'react'
 import FoldAbleSection from '@/components/blocks/FoldAbleSection'
-import { Route, Routes, useNavigate } from 'react-router-dom'
+import { Route, Routes } from 'react-router-dom'
 import useCopilotState from '@/hooks/useCopilotState'
 import usePostCopilot from '@/hooks/usePostCopilot'
 import { useToast } from '@chakra-ui/react'
@@ -13,12 +13,7 @@ type Props = {
 
 const Copilot = ({ temperature, ...state }: Props) => {
   const toast = useToast()
-  const navigation = useNavigate()
-  const { data, mutate, isLoading, isError, error } = usePostCopilot(temperature, {
-    onMutate: () => {
-      navigation('result')
-    },
-    onSuccess: () => {},
+  const { data, mutate, isLoading, error, reset } = usePostCopilot(temperature, {
     onError: () => {
       toast({
         title: '네트워크 에러.',
@@ -37,10 +32,10 @@ const Copilot = ({ temperature, ...state }: Props) => {
         element={
           <FoldAbleSection title="코파일럿">
             <CopilotMain
+              reset={reset}
               mutate={mutate}
               {...state}
               isLoading={isLoading}
-              isError={isError}
               errorMessage={state.errorMessage ?? error?.message ?? null}
               copilot={data?.content}
             />

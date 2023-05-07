@@ -16,6 +16,15 @@ export default () => {
       watch: {
         usePolling: true,
       },
+      proxy: {
+        '/api/': {
+          target: 'http://localhost:54321/functions/v1/',
+          changeOrigin: true,
+          rewrite: (_) => _.replace(/^\/api/, ''),
+          secure: false,
+          ws: true,
+        },
+      },
     },
     resolve: {
       alias: {

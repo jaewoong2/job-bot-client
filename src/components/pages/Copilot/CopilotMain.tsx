@@ -1,12 +1,19 @@
 import TextArea from '@/components/atoms/TextArea'
 import useBeforeUnload from '@/hooks/useBeforeUnload'
-import useCopilotState from '@/hooks/useCopilotState'
-import { LABEL, LIMIT_TEXT_LENGTH, PLACEHOLDER, TOOLTIP } from '@/hooks/useFeedbackState'
+import useCopilotState, {
+  LABEL,
+  LIMIT_TEXT_LENGTH,
+  MINIMUM_TEXT_LENGTH,
+  TOOLTIP,
+} from '@/hooks/useCopilotState'
+import useDebounce from '@/hooks/useDebounce'
+import { PLACEHOLDER } from '@/hooks/useFeedbackState'
 import { Copilot } from '@/types'
-import { QuestionIcon } from '@chakra-ui/icons'
-import { Input, Text } from '@chakra-ui/react'
+import { AddIcon, InfoIcon, QuestionIcon } from '@chakra-ui/icons'
+import { Input, Tag, TagLabel, TagLeftIcon, Text } from '@chakra-ui/react'
 import { AxiosError } from 'axios'
-import React, { useCallback } from 'react'
+import React, { useCallback, useEffect, useState } from 'react'
+import { FcDislike, FcLike } from 'react-icons/fc'
 import { UseMutateFunction } from 'react-query'
 
 type Props = {
@@ -24,37 +31,76 @@ type Props = {
 
   isLoading: boolean
   copilot?: string
-  isError: boolean
+  reset: () => void
 } & ReturnType<typeof useCopilotState>
 
 const CopilotMain = ({
   errorMessage,
-  onSubmit,
   content,
   title,
+  reset,
   mutate,
-  handleChangeContent,
   handleChangePosition,
+  handleChangeContent,
   handleChangeTitle,
   position,
   copilot,
-  isError,
   isLoading,
+  setMessage,
+  setContent,
 }: Props) => {
-  const submit: React.FormEventHandler<HTMLFormElement> = useCallback(
-    (e) => {
-      // data fetch
-      onSubmit(e)(mutate)
-    },
-    [content, title]
-  )
+  const [isActive, setIsActive] = useState(false)
+  const [isEditing, setIsEditing] = useState(false)
+  const debounceValue = useDebounce(content, 2500)
+
+  const handleChange = useCallback((e: React.ChangeEvent<HTMLTextAreaElement>) => {
+    setIsEditing(true)
+    handleChangeContent(e)
+  }, [])
+
+  const handleAddCopliot = useCallback(() => {
+    if (copilot) {
+      setContent((prev) => prev + copilot)
+    }
+    reset()
+  }, [copilot])
+
+  const onKeyDown: React.KeyboardEventHandler<HTMLTextAreaElement> = (e) => {
+    if (e.key === 'Tab') {
+      e.preventDefault()
+      if (copilot) {
+        setContent((prev) => prev + copilot)
+      }
+      reset()
+    } else {
+      reset()
+    }
+  }
+
+  useEffect(() => {
+    if (debounceValue === content) {
+      if (isEditing && isActive && position && title && content) {
+        if (content.length > LIMIT_TEXT_LENGTH) {
+          setMessage(`최대 ${LIMIT_TEXT_LENGTH}자 까지만 작성 가능 해요 🥲`)
+          return
+        }
+
+        if (content.length < MINIMUM_TEXT_LENGTH) {
+          setMessage(`${MINIMUM_TEXT_LENGTH - content.length}자 더 작성 부탁 드려요`)
+          return
+        }
+
+        setMessage(null)
+        mutate({ content, position, title })
+        setIsEditing(false)
+      }
+    }
+  }, [debounceValue, content, title, position, isActive, isEditing])
 
   useBeforeUnload(content.length > 0)
 
-  console.log(copilot, isError, isLoading)
-
   return (
-    <form onSubmit={submit} id="feedback-form">
+    <form id="feedback-form">
       <div className="w-full px-6 pt-3 text-sm">
         <div className="xl:flex gap-10">
           <div className="xl:w-[400px]">
@@ -90,7 +136,21 @@ const CopilotMain = ({
         </div>
       </div>
       <div className="p-3 pb-0">
+        <div className="w-full flex items-end px-3 flex-col gap-2">
+          <button
+            type="button"
+            onClick={() => setIsActive((prev) => !prev)}
+            className="rounded-xl p-3 dark:shadow-inner dark:shadow-darkBg-200 shadow-xl cursor-pointer"
+          >
+            {isActive ? <FcLike /> : <FcDislike />}
+          </button>
+          <span className="text-xs flex gap-2 items-center text-gray-400">
+            <InfoIcon />
+            코파일럿 {!isActive ? '정지' : '실행 중'}
+          </span>
+        </div>
         <TextArea
+          isLoading={isLoading}
           label={LABEL}
           placeholder={PLACEHOLDER}
           resize="none"
@@ -99,10 +159,28 @@ const CopilotMain = ({
           _dark={{
             borderColor: errorMessage ? 'red.300' : 'gray.500',
           }}
-          value={content}
           tooltip={TOOLTIP}
-          onChange={handleChangeContent}
+          isDisabled={isLoading}
+          value={content}
+          onChange={handleChange}
+          onKeyDown={onKeyDown}
+          className="relative"
         />
+        {copilot && (
+          <div className="px-3">
+            <Tag
+              size="md"
+              key="md"
+              variant="subtle"
+              cursor="pointer"
+              className="p-2"
+              onClick={handleAddCopliot}
+            >
+              <TagLeftIcon boxSize="12px" as={AddIcon} />
+              <TagLabel>{copilot}</TagLabel>
+            </Tag>
+          </div>
+        )}
         <div
           className={`w-full flex justify-between px-3 text-sm ${
             errorMessage ? 'text-red-400' : 'text-gray-500'

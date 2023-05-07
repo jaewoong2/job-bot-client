@@ -73,7 +73,7 @@ export const postCopilot = async (data: Copilot & { temperature: number }) => {
     const response = await instance.post<{
       role: 'assistant' | 'user' | 'system'
       content: string
-    }>('/copilot', data)
+    }>('/copilot', { ...data })
 
     if (response.status > 299) {
       throw new AxiosError('Unknwon Error...')

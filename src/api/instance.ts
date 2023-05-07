@@ -6,9 +6,7 @@ const HEADERS = {
 }
 
 const instance = axios.create({
-  baseURL: import.meta.env.DEV
-    ? 'http://localhost:54321/functions/v1/'
-    : import.meta.env.VITE_ENDPOINT_URL,
+  baseURL: import.meta.env.DEV ? '/api/' : import.meta.env.VITE_ENDPOINT_URL,
   headers: import.meta.env.DEV ? { 'Content-Type': 'application/json' } : HEADERS,
 })
 
