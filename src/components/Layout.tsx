@@ -2,12 +2,15 @@
 import React, { MouseEvent, PropsWithChildren, TouchEvent, useCallback, useState } from 'react'
 import { useColorMode } from '@chakra-ui/react'
 import { RxHamburgerMenu } from 'react-icons/rx'
+import Link from 'next/link'
+import Image from 'next/image'
+
 import LeftSide from './blocks/LeftSide'
 import ModalBase from './blocks/ModalBase'
 import ThemeButton from './blocks/ThemeButton'
 import Footer from './atoms/Footer'
-import Link from 'next/link'
-import Image from 'next/image'
+
+import { temperatureContext } from '@/hooks/useTemperature'
 
 const Layout = ({ children }: PropsWithChildren) => {
   const location = window.location
@@ -93,7 +96,7 @@ const Layout = ({ children }: PropsWithChildren) => {
           location.pathname === '/' ? 'flex justify-center' : 'lg:ml-[320px] lg:w-[calc(100%-550px)] '
         }`}
       >
-        {children}
+        <temperatureContext.Provider value={{ temperature }}>{children}</temperatureContext.Provider>
       </main>
       {/* Right SideBar */}
       <aside className='relative h-fit w-full max-lg:px-6 lg:fixed lg:right-0 lg:top-16 lg:z-50 lg:max-w-[250px] lg:px-6' />

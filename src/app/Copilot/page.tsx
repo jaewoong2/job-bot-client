@@ -1,35 +1,31 @@
+'use client'
 import React, { useCallback, useEffect, useState } from 'react'
 import TextArea from '@/components/atoms/TextArea'
-import useCopilotState, { LABEL, LIMIT_TEXT_LENGTH, MINIMUM_TEXT_LENGTH, TOOLTIP } from '@/hooks/useCopilotState'
 import useDebounce from '@/hooks/useDebounce'
-import { PLACEHOLDER } from '@/hooks/useFeedbackState'
-import { Copilot } from '@/types'
 import { AddIcon, InfoIcon, QuestionIcon } from '@chakra-ui/icons'
 import { Icon, Input, Tag, TagLabel, TagLeftIcon, Text } from '@chakra-ui/react'
 import { FcDislike, FcLike } from 'react-icons/fc'
+import useCopilot, { LABEL, LIMIT_TEXT_LENGTH, MINIMUM_TEXT_LENGTH, PLACEHOLDER, TOOLTIP } from './hooks/useCopilot'
+import useTemperature from '@/hooks/useTemperature'
 
-type Props = {
-  errorMessage?: string | null
-  isLoading: boolean
-  copilot?: string
-  reset: () => void
-} & ReturnType<typeof useCopilotState>
+const CopilotMain = () => {
+  const {
+    content,
+    errorMessage,
+    handleChangeContent,
+    handleChangePosition,
+    handleChangeTitle,
+    position,
+    setContent,
+    setMessage,
+    title,
+    copilot,
+    trigger: mutate,
+    reset,
+    isLoading,
+  } = useCopilot()
 
-const CopilotMain = ({
-  errorMessage,
-  content,
-  title,
-  reset,
-  mutate,
-  handleChangePosition,
-  handleChangeContent,
-  handleChangeTitle,
-  position,
-  copilot,
-  isLoading,
-  setMessage,
-  setContent,
-}: Props) => {
+  const { temperature } = useTemperature()
   const [isActive, setIsActive] = useState(false)
   const [isEditing, setIsEditing] = useState(false)
   const debounceValue = useDebounce(content, 2500)
@@ -72,13 +68,11 @@ const CopilotMain = ({
         }
 
         setMessage(null)
-        mutate({ content, position, title })
+        mutate({ content, position, title, temperature })
         setIsEditing(false)
       }
     }
-  }, [debounceValue, content, title, position, isActive, isEditing])
-
-  useBeforeUnload(content.length > 0)
+  }, [debounceValue, content, title, position, isActive, isEditing, temperature, setMessage, mutate])
 
   return (
     <form id='feedback-form'>
