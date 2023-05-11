@@ -3,11 +3,14 @@
 
 import { CacheProvider } from '@chakra-ui/next-js'
 import { ChakraProvider } from '@chakra-ui/react'
+import { SWRConfig } from 'swr'
 
-export function ChakraProviders({ children }: { children: React.ReactNode }) {
+export function Providers({ children }: { children: React.ReactNode }) {
   return (
-    <CacheProvider>
-      <ChakraProvider resetCSS>{children}</ChakraProvider>
-    </CacheProvider>
+    <SWRConfig>
+      <CacheProvider>
+        <ChakraProvider resetCSS>{children}</ChakraProvider>
+      </CacheProvider>
+    </SWRConfig>
   )
 }
