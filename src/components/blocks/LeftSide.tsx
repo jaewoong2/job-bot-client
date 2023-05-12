@@ -3,10 +3,10 @@ import Select from '../atoms/Select'
 import Slider from '../atoms/Slider'
 import Option from '../atoms/Option'
 import { usePathname } from 'next/navigation'
+import { Pages } from '@/types'
 
-type OptionValues = 'write' | 'feedback' | 'rating' | 'copilot'
 type OptionType = {
-  value: OptionValues
+  value: Pages
   label: string
 }
 
