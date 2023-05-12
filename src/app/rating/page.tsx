@@ -9,6 +9,7 @@ import Result from '@/components/blocks/Result'
 
 import useRating, { LIMIT_TEXT_LENGTH, PLACEHOLDER } from './hooks/useRating'
 import usePostRating from './hooks/usePostRating'
+import ContentResult from '@/components/blocks/ContentResult'
 
 const RatingMain = () => {
   const { content, errorMessage, handleChangeContent, handleChangeJob, job, onSubmit } = useRating()
@@ -18,8 +19,10 @@ const RatingMain = () => {
   const sumbit: React.FormEventHandler<HTMLFormElement> = useCallback(
     (e) => {
       // data fetch
-      onSubmit(e)(mutate)
-      onOpen()
+      onSubmit(e)((args) => {
+        mutate(args)
+        onOpen()
+      })
     },
     [onSubmit, mutate, onOpen]
   )
@@ -96,33 +99,14 @@ const RatingMain = () => {
         </div>
       </div>
       <Result title={'지원서 평가'} isOpen={isOpen} size={'lg'} onClose={onClose} onOpen={onOpen}>
-        <div className='relative mt-5'>
-          {isLoading && (
-            <div className='flex h-full min-h-[400px] w-full animate-pulse items-center justify-center rounded-md border bg-slate-100 p-3 py-8 font-light dark:border-gray-500 dark:bg-darkBg-300'>
-              답변 생성 중..
-            </div>
-          )}
-          {content && !error && !isLoading && (
-            <div className='h-full min-h-[400px] w-full whitespace-pre-wrap rounded-md border p-3 py-8 dark:border-gray-500 dark:bg-darkBg-300'>
-              {data?.content}
-            </div>
-          )}
-          {error && (
-            <div className='flex h-full min-h-[400px] w-full flex-col items-center justify-center rounded-md border border-red-400 text-[1rem] text-red-500 dark:bg-darkBg-300'>
-              에러가 발생 했어요 😢
-              {error?.message && <div className='text-white'>에러 메세지: {error?.message}</div>}
-            </div>
-          )}
-          <button
-            type='button'
-            className={`mt-10 w-full rounded-xl bg-sky-50 py-3 text-gray-600 hover:bg-sky-100 dark:bg-darkBg-300 dark:text-white dark:hover:bg-darkBg-200 ${
-              error ? 'border border-red-100 bg-red-50 text-rose-400' : ''
-            }`}
-            onClick={onClose}
-          >
-            확인
-          </button>
-        </div>
+        <ContentResult
+          content={data?.content}
+          error={error?.message}
+          isError={Boolean(error?.message)}
+          isLoading={isLoading}
+          isSuccess={Boolean(data?.role)}
+          onClickButton={onOpen}
+        />
       </Result>
     </FoldAbleSection>
   )
