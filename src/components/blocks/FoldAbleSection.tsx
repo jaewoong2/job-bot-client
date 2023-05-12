@@ -1,3 +1,4 @@
+'use client'
 import React, { PropsWithChildren, useEffect } from 'react'
 import { FcExpand } from 'react-icons/fc'
 import useFoldAbleActions from '@/hooks/useFoldAbleActions'

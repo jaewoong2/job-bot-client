@@ -3,9 +3,14 @@ import React from 'react'
 import { FcPositiveDynamic, FcTodoList, FcGraduationCap, FcSms } from 'react-icons/fc'
 import Link from 'next/link'
 import Image from 'next/image'
-import Layout from '@/components/Layout'
+import { useColorMode } from '@chakra-ui/react'
 
 const HOME_NAVIGATION = [
+  {
+    icon: '🐝',
+    content: '코파일럿',
+    href: '/copilot',
+  },
   {
     icon: <FcGraduationCap />,
     content: '지원서 작성',
@@ -14,17 +19,12 @@ const HOME_NAVIGATION = [
   {
     icon: <FcPositiveDynamic />,
     content: '지원서 평가',
-    href: '/pnf',
+    href: '/rating',
   },
   {
     icon: <FcTodoList />,
     content: '지원서 피드백',
     href: '/feedback',
-  },
-  {
-    icon: '🐝',
-    content: '코파일럿',
-    href: '/copilot',
   },
   {
     icon: <FcSms />,
@@ -34,22 +34,18 @@ const HOME_NAVIGATION = [
 ]
 
 const Home = () => {
+  const { colorMode } = useColorMode()
   return (
     <section className='flex w-full flex-col items-center gap-10'>
-      <div>
-        <div className='flex h-[200px] w-full justify-center max-sm:sr-only'>
-          <Image
-            priority={false}
-            src='/jobbotthubmnail.png'
-            alt='잡봇 로고'
-            className='drop-shadow-lg'
-            width={200}
-            height={200}
-          />
-        </div>
-        <div className='relative flex h-24 w-24 items-center justify-center rounded-3xl p-3 text-4xl shadow-xl dark:shadow-inner dark:shadow-darkBg-200 sm:sr-only'>
-          <h1 className='flex items-center justify-center font-thin text-black dark:text-slate-400'>잡봇</h1>
-        </div>
+      <div className='flex h-[200px] w-full justify-center pl-6'>
+        <Image
+          priority={false}
+          src={colorMode === 'light' ? '/잡봇.svg' : '/다크잡봇.svg'}
+          alt='잡봇 로고'
+          className='drop-shadow-lg'
+          width={200}
+          height={200}
+        />
       </div>
       <div className='mx-auto text-2xl font-bold max-xl:text-xl'>이용 가능한 컨텐츠</div>
       <div className='grid max-w-md grid-cols-4 justify-center gap-5 p-5 max-md:grid-cols-3 max-sm:grid-cols-4 max-[320px]:grid-cols-3'>

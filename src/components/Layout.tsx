@@ -3,7 +3,6 @@ import React, { MouseEvent, PropsWithChildren, TouchEvent, useCallback, useState
 import { useColorMode } from '@chakra-ui/react'
 import { RxHamburgerMenu } from 'react-icons/rx'
 import Link from 'next/link'
-import Image from 'next/image'
 
 import LeftSide from './blocks/LeftSide'
 import ModalBase from './blocks/ModalBase'
@@ -11,9 +10,13 @@ import ThemeButton from './blocks/ThemeButton'
 import Footer from './atoms/Footer'
 
 import { temperatureContext } from '@/hooks/useTemperature'
+import useMounted from '@/hooks/useMounted'
+import { usePathname } from 'next/navigation'
 
 const Layout = ({ children }: PropsWithChildren) => {
-  const location = window.location
+  const pathName = usePathname()
+  const isMounted = useMounted()
+
   const { colorMode, setColorMode } = useColorMode()
   const [temperature, setTemperature] = useState(50)
 
@@ -37,17 +40,18 @@ const Layout = ({ children }: PropsWithChildren) => {
     [hideMenuClick]
   )
 
+  if (!isMounted) {
+    return null
+  }
+
   return (
     <div className='h-fit min-h-full w-full dark:bg-darkBg-400 dark:text-white'>
       {/* Head Navigation */}
       <header className='fixed top-0 z-50 flex h-12 w-full items-center justify-between border-b bg-white bg-opacity-40 px-3 backdrop-blur-sm dark:border-gray-500 dark:bg-darkBg-400'>
         {/* LINK 로 바꿔야함 */}
-        <Link href='/' className='rounded-xl p-2 hover:bg-slate-100 dark:hover:bg-darkBg-200'>
+        <Link href='/' className='rounded-lg p-2 hover:bg-slate-100 dark:hover:bg-darkBg-200'>
           <div className='flex items-center gap-3'>
-            <div className='w-6'>
-              <Image className='w-full max-w-full' src='/favicon.ico' alt='KAP BOT' width={24} height={24} />
-            </div>
-            <h1>잡봇 - 지원서 봇</h1>
+            <h1 className='logo pb-1'> JOB BOT</h1>
           </div>
         </Link>
         <div className='flex items-center gap-4'>
@@ -93,7 +97,7 @@ const Layout = ({ children }: PropsWithChildren) => {
       {/* Main */}
       <main
         className={`h-fit  min-h-[calc(100vh)] w-full pt-16 ${
-          location.pathname === '/' ? 'flex justify-center' : 'lg:ml-[320px] lg:w-[calc(100%-550px)] '
+          pathName === '/' ? 'flex justify-center' : 'lg:ml-[320px] lg:w-[calc(100%-550px)] '
         }`}
       >
         <temperatureContext.Provider value={{ temperature }}>{children}</temperatureContext.Provider>

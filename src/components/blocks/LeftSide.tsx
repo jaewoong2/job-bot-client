@@ -2,8 +2,9 @@ import React, { useCallback } from 'react'
 import Select from '../atoms/Select'
 import Slider from '../atoms/Slider'
 import Option from '../atoms/Option'
+import { usePathname } from 'next/navigation'
 
-type OptionValues = 'write' | 'feedback' | 'pnf' | 'copilot'
+type OptionValues = 'write' | 'feedback' | 'rating' | 'copilot'
 type OptionType = {
   value: OptionValues
   label: string
@@ -17,19 +18,22 @@ type Props = {
 
 const options: OptionType[] = [
   { value: 'write', label: '경험 작성' },
-  { value: 'pnf', label: '지원서 평가' },
+  { value: 'rating', label: '지원서 평가' },
   { value: 'feedback', label: '지원서 피드백' },
   { value: 'copilot', label: '지원서 봇' },
 ]
 
 const LeftSide = ({ temperature, setTemperature, isOnMenuBox }: Props) => {
-  const navigation = window.location
+  const pathname = usePathname()
 
-  const handleChangeSlide = useCallback((value: number) => {
-    setTemperature(value)
-  }, [])
+  const handleChangeSlide = useCallback(
+    (value: number) => {
+      setTemperature(value)
+    },
+    [setTemperature]
+  )
 
-  if (navigation.pathname === '/') return null
+  if (pathname === '/') return null
 
   return (
     <aside
@@ -43,7 +47,7 @@ const LeftSide = ({ temperature, setTemperature, isOnMenuBox }: Props) => {
             <div className='flex flex-col'>
               <span className='py-1 font-[300]'>어떤 것을 도와 드릴까요?</span>
               <Select
-                value={options[options.findIndex((option) => option.value === navigation.pathname.split('/')[1])]}
+                value={options[options.findIndex((option) => option.value === pathname.split('/')[1])]}
                 options={options}
                 isMulti={false}
                 className='z-50'

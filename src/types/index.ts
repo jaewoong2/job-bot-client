@@ -19,7 +19,7 @@ export type Feedback = {
   temperature: number
 }
 
-export type Pnf = {
+export type Rating = {
   content: string
   job: string
   temperature: number
