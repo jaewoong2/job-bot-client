@@ -1,7 +1,7 @@
 import { ChangeEvent, useCallback, useMemo, useState } from 'react'
 import { Star } from '@/types'
 
-export const MINIMUM_TEXT_LENGTH = 1
+export const MINIMUM_TEXT_LENGTH = 60
 export const ERROR_MINIMUM_MESSAGE = `${MINIMUM_TEXT_LENGTH}자의 정보가 필요해요 🥲`
 export const LIMIT_TEXT_LENGTH = 240
 export const ERROR_LIMIT_MESSAGE = `최대 ${LIMIT_TEXT_LENGTH}자 까지 작성 가능 해요`
