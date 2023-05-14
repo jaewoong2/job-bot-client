@@ -1,19 +1,18 @@
+import api from '@/api'
 import { ChatGPTResponse, Feedback } from '@/types'
 import useSWRMutation from 'swr/mutation'
 
 const fetcher: (url: string, { arg }: { arg: Feedback }) => Promise<ChatGPTResponse> = async (url, { arg }) => {
-  const response = await fetch(url, {
+  const response = await api.request<Feedback, ChatGPTResponse>({
+    url,
     method: 'POST',
-    body: JSON.stringify({ ...arg, maxTokens: 1 }),
-    headers: { Authorization: process.env.NEXT_PUBLIC_SUPABASE_JWT! },
+    data: arg,
   })
 
-  return response.json()
+  return response.data
 }
 
-const URL = process.env.NODE_ENV === 'development' ? 'api/' : process.env.NEXT_PUBLIC_ENDPOINT_URL_PRODUCTION!
-
 const usePostFeedback = () => {
-  return useSWRMutation<ChatGPTResponse, Error, string, Feedback>(URL + 'feedback', fetcher)
+  return useSWRMutation<ChatGPTResponse, Error, string, Feedback>('feedback', fetcher)
 }
 export default usePostFeedback
