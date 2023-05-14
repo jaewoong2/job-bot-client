@@ -105,7 +105,7 @@ const RatingMain = () => {
           isError={Boolean(error?.message)}
           isLoading={isLoading}
           isSuccess={Boolean(data?.role)}
-          onClickButton={onOpen}
+          onClickButton={onClose}
         />
       </Result>
     </FoldAbleSection>
