@@ -5,6 +5,7 @@ type Actions = {
   hide: () => void
   toggle: () => void
 }
+
 export const FoldAbleValueContext = createContext<{ isFold: boolean; fold: boolean }>({
   isFold: false,
   fold: false,
@@ -16,7 +17,7 @@ export const FoldAbleActionsContext = createContext<Actions>({
   toggle: () => {},
 })
 
-const FoldAbleContext = ({ children }: PropsWithChildren<{}>) => {
+const FoldAbleContext = ({ children }: PropsWithChildren) => {
   const [isFold, setIsFold] = useState(false)
   const [fold, setFold] = useState(false)
 

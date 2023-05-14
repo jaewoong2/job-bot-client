@@ -10,7 +10,7 @@ type SelectProps = Props<PropsValue<Props['value'] | any>, false>
 const Select = ({ components, ...props }: SelectProps) => {
   return (
     <ReactSelect
-      className="min-w-[180px]"
+      className='min-w-[180px]'
       components={{
         Option: Option.normal,
         Menu,
