@@ -1,20 +1,21 @@
 import React, { PropsWithChildren } from 'react'
 import { Button } from '@chakra-ui/react'
 import { RxArrowRight } from 'react-icons/rx'
-import { Link, LinkProps } from 'react-router-dom'
+import Link, { LinkProps } from 'next/link'
+import Image from 'next/image'
 
 type Props = {
   title: string
   imgSrc: string
-  to?: string
   buttonName?: string
   imgClassName?: string
+  className?: string
 } & LinkProps
 
 const Card = ({
   title,
   imgSrc,
-  to,
+  href,
   className,
   children,
   buttonName,
@@ -23,21 +24,22 @@ const Card = ({
 }: PropsWithChildren<Props>) => {
   return (
     <Link
-      to={to ?? title}
-      className={`flex flex-col border max-w-xs max-h-[350px] h-full aspect-square rounded-xl w-full cursor-pointer shadow-md hover:bg-slate-50 dark:shadow-darkBg-300 dark:bg-darkBg-300 hover:dark:bg-darkBg-400 hover:-translate-y-1 transition-transform ${className}`}
+      href={href ?? title}
+      className={`flex aspect-square h-full max-h-[350px] w-full max-w-xs cursor-pointer flex-col rounded-xl border shadow-md transition-transform hover:-translate-y-1 hover:bg-slate-50 dark:bg-darkBg-300 dark:shadow-darkBg-300 hover:dark:bg-darkBg-400 ${className}`}
       aria-label={`카드: ${title}`}
       {...rest}
     >
       <figure
-        className={`rounded-t-xl w-auto flex items-center bg-slate-200 h-[150px] overflow-hidden ${imgClassName}`}
+        className={`flex h-[150px] w-auto items-center overflow-hidden rounded-t-xl bg-slate-200 ${imgClassName}`}
       >
-        <img className="" src={imgSrc} alt={`카드 이미지: ${title}`} />
+        <Image className='' src={imgSrc} alt={`카드 이미지: ${title}`} />
       </figure>
-      <div className="p-3 flex flex-col flex-1 gap-2">
-        <h2 className="text-[1.1em] font-semibold text-ellipsis">{title}</h2>
+      <div className='flex flex-1 flex-col gap-2 p-3'>
+        <h2 className='text-ellipsis text-[1.1em] font-semibold'>{title}</h2>
       </div>
-      <div className="w-full flex justify-end p-3">
-        <Button className="flex gap-2">
+      {children}
+      <div className='flex w-full justify-end p-3'>
+        <Button className='flex gap-2'>
           <span>{buttonName ?? '보러가기'}</span>
           <RxArrowRight />
         </Button>

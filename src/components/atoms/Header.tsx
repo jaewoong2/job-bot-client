@@ -6,10 +6,7 @@ type Props = {
 
 const Header = ({ title, className, children, ...props }: Props) => {
   return (
-    <header
-      className={`w-full border h-12 flex items-center px-3 top-0 fixed bg-white z-50 ${className}`}
-      {...props}
-    >
+    <header className={`fixed top-0 z-50 flex h-12 w-full items-center border bg-white px-3 ${className}`} {...props}>
       {title && <h1>{title}</h1>}
       {children}
     </header>
