@@ -1,5 +1,10 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  output: 'export',
+  distDir: 'dist',
+}
+
+const devConfig = {
   async rewrites() {
     return [
       {
@@ -10,4 +15,4 @@ const nextConfig = {
   },
 }
 
-module.exports = nextConfig
+module.exports = process.env.NODE_ENV === 'development' ? devConfig : nextConfig

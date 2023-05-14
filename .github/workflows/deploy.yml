@@ -25,11 +25,15 @@ jobs:
 
       - name: Generate Environment Variables File for Production
         run: |
-          echo "VITE_ENDPOINT_URL=$VITE_ENDPOINT_URL" >> .env
-          echo "VITE_SUPABASE_JWT=$VITE_SUPABASE_JWT" >> .env
+          echo "NEXT_PUBLIC_ENDPOINT_URL_DEV=$NEXT_PUBLIC_ENDPOINT_URL_DEV" >> .env
+          echo "NEXT_PUBLIC_ENDPOINT_URL_PRODUCTION=$NEXT_PUBLIC_ENDPOINT_URL_PRODUCTION" >> .env
+          echo "NEXT_PUBLIC_PRODUCTION_URL=$NEXT_PUBLIC_PRODUCTION_URL" >> .env
+          echo "NEXT_PUBLIC_SUPABASE_JWT=$NEXT_PUBLIC_SUPABASE_JWT" >> .env
         env:
-          VITE_ENDPOINT_URL: ${{ secrets.VITE_ENDPOINT_URL }}
-          VITE_SUPABASE_JWT: ${{ secrets.VITE_SUPABASE_JWT }}
+          NEXT_PUBLIC_ENDPOINT_URL_DEV: ${{ secrets.NEXT_PUBLIC_ENDPOINT_URL_DEV }}
+          NEXT_PUBLIC_ENDPOINT_URL_PRODUCTION: ${{ secrets.NEXT_PUBLIC_ENDPOINT_URL_PRODUCTION }}
+          NEXT_PUBLIC_PRODUCTION_URL: ${{ secrets.NEXT_PUBLIC_PRODUCTION_URL }}
+          NEXT_PUBLIC_SUPABASE_JWT: ${{ secrets.NEXT_PUBLIC_SUPABASE_JWT }}
 
       - name: Build # project build
         run: yarn build
