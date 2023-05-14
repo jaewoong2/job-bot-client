@@ -110,7 +110,7 @@ const StarMain = () => {
             isError={isError}
             isLoading={isLoading}
             isSuccess={Boolean(content?.role)}
-            onClickButton={onOpen}
+            onClickButton={onClose}
           />
         </Result>
       </form>

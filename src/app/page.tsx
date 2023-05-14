@@ -6,6 +6,9 @@ import Image from 'next/image'
 import { useColorMode } from '@chakra-ui/react'
 import { Pages } from '@/types'
 
+import 잡봇 from '@/components/assets/잡봇.svg'
+import 다크잡봇 from '@/components/assets/다크잡봇.svg'
+
 const HOME_NAVIGATION: {
   icon: React.ReactNode
   content: string
@@ -40,7 +43,7 @@ const Home = () => {
       <div className='flex h-[200px] w-full justify-center pl-6'>
         <Image
           priority={false}
-          src={colorMode === 'light' ? '/잡봇.svg' : '/다크잡봇.svg'}
+          src={colorMode === 'light' ? 잡봇 : 다크잡봇}
           alt='잡봇 로고'
           className='drop-shadow-lg'
           width={200}

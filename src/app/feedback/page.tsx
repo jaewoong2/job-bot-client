@@ -101,7 +101,7 @@ const FeedbackMain = () => {
           isError={Boolean(error?.message)}
           isLoading={isLoading}
           isSuccess={Boolean(content?.role)}
-          onClickButton={onOpen}
+          onClickButton={onClose}
         />
       </Result>
     </FoldAbleSection>
