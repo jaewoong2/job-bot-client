@@ -24,7 +24,7 @@ jobs:
         run: yarn
 
       - name: Generate Site Map
-        run: sh script/generate-sitemap.sh
+        run: sh src/script/generate-sitemap.sh
 
       - name: Generate Environment Variables File for Production
         run: |
