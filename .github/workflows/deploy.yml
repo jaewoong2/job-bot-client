@@ -22,10 +22,7 @@ jobs:
             ${{ runner.OS }}-
       - name: Install Dependencies # node module install
         run: yarn
-
-      - name: Generate Site Map
-        run: sh src/script/generate-sitemap.sh
-
+        
       - name: Generate Environment Variables File for Production
         run: |
           echo "NEXT_PUBLIC_ENDPOINT_URL_DEV=$NEXT_PUBLIC_ENDPOINT_URL_DEV" >> .env
