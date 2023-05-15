@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://job-bot.site
+
+# Sitemaps
+Sitemap: https://job-bot.site/sitemap.xml
