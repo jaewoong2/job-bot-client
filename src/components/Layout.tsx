@@ -23,7 +23,7 @@ const Layout = ({ children }: PropsWithChildren) => {
   return (
     <div className='h-fit min-h-full w-full dark:bg-darkBg-400 dark:text-white'>
       {/* Head Navigation */}
-      <Header title={'잡 봇 - 자소서 지원 봇'} temperature={temperature} setTemperature={setTemperature} />
+      <Header title={'잡봇 - 자소서 지원 봇'} temperature={temperature} setTemperature={setTemperature} />
       {/* Left Side Bar */}
       <LeftSide temperature={temperature} setTemperature={setTemperature} />
       {/* Main */}
