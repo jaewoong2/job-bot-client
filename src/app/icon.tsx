@@ -1,8 +1,9 @@
+/* eslint-disable react/no-unescaped-entities */
 import { ImageResponse } from 'next/server'
 
 export const size = {
-  width: 32,
-  height: 32,
+  width: 320,
+  height: 320,
 }
 export const contentType = 'image/png'
 export const runtime = 'edge'
@@ -14,12 +15,11 @@ export default function icon() {
     (
       <div
         style={{
-          fontSize: 18,
           background: '#7d5ce2',
           width: '100%',
           height: '100%',
           display: 'flex',
-          borderRadius: 999,
+          borderRadius: '92px',
           alignItems: 'center',
           justifyContent: 'center',
           color: 'white',
@@ -27,18 +27,20 @@ export default function icon() {
       >
         <div
           style={{
-            fontSize: 18,
+            fontSize: 200,
             background: '#d9d9d9',
             width: '80%',
             height: '80%',
             display: 'flex',
-            borderRadius: 999,
+            fontFamily: 'fantasy',
+            borderRadius: '72px',
+            fontWeight: 900,
             alignItems: 'center',
             justifyContent: 'center',
-            color: '#888',
+            color: '#7d5ce2',
           }}
         >
-          b
+          B'
         </div>
       </div>
     ),

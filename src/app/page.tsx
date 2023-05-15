@@ -6,9 +6,6 @@ import Image from 'next/image'
 import { useColorMode } from '@chakra-ui/react'
 import { Pages } from '@/types'
 
-import 잡봇 from '@/components/assets/잡봇.svg'
-import 다크잡봇 from '@/components/assets/다크잡봇.svg'
-
 const HOME_NAVIGATION: {
   icon: React.ReactNode
   content: string
@@ -39,16 +36,18 @@ const HOME_NAVIGATION: {
 const Home = () => {
   const { colorMode } = useColorMode()
   return (
-    <section className='flex w-full flex-col items-center gap-10'>
-      <div className='flex h-[200px] w-full justify-center pl-6'>
-        <Image
-          priority={false}
-          src={colorMode === 'light' ? 잡봇 : 다크잡봇}
-          alt='잡봇 로고'
-          className='drop-shadow-lg'
-          width={200}
-          height={200}
-        />
+    <section className='0 flex w-full flex-col items-center gap-1'>
+      <div className='flex h-[200px] items-center justify-center'>
+        <div className='flex h-[130px] w-full justify-center pl-6'>
+          <Image
+            priority={false}
+            src={colorMode === 'dark' ? '/잡봇.png' : '/다크잡봇.png'}
+            alt='잡봇 로고'
+            className='h-auto max-h-full w-auto max-w-full drop-shadow-lg'
+            width={200}
+            height={200}
+          />
+        </div>
       </div>
       <div className='grid max-w-md grid-cols-4 justify-center gap-5 p-5 max-md:grid-cols-3 max-sm:grid-cols-4 max-[320px]:grid-cols-3'>
         {HOME_NAVIGATION.map(({ content, icon, href }) => (

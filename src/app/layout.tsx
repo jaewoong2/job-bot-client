@@ -12,21 +12,11 @@ export const metadata: Metadata = {
     description: '생성 AI를 이용하여 지원서 작성을 도와줘요',
     url: 'https://job-bot.site',
     siteName: '잡봇',
-    images: [
-      {
-        url: '@/components/assets/잡봇.svg',
-        width: 800,
-        height: 600,
-      },
-      {
-        url: '@/components/assets/잡봇.svg',
-        width: 1800,
-        height: 1600,
-      },
-    ],
+    images: '/잡봇.png',
     locale: 'ko-KR',
     type: 'website',
   },
+  authors: { name: '@jaewoong2' },
 }
 
 import './globals.css'
