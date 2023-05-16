@@ -5,6 +5,9 @@ import ThemeButton from './ThemeButton'
 import { useColorMode } from '@chakra-ui/react'
 import LeftSide from './LeftSide'
 import { usePathname } from 'next/navigation'
+import Image from 'next/image'
+
+import logo from '@/assets/favicon.png'
 
 const useMenu = () => {
   const [isMenuClick, setIsMenuClick] = useState(false)
@@ -117,9 +120,10 @@ const Header = ({
         {...props}
       >
         {/* LINK 로 바꿔야함 */}
-        <Link href='/' className='rounded-lg p-2 hover:bg-slate-100 dark:hover:bg-darkBg-200'>
+        <Link href='/' className='rounded-lg p-2'>
           <div className='flex items-center gap-3'>
-            <h1 className='logo pb-1 font-bold'>{title}</h1>
+            <Image priority={true} width={24} height={24} src={logo} alt='잡봇 logo' />
+            <h1 className='logo rounded-md p-1 pb-1 font-bold hover:bg-slate-100 dark:hover:bg-darkBg-200'>{title}</h1>
           </div>
         </Link>
         <div className='flex items-center gap-4'>

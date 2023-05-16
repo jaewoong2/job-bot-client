@@ -1,10 +1,13 @@
 'use client'
 import React from 'react'
-import { FcPositiveDynamic, FcTodoList, FcGraduationCap } from 'react-icons/fc'
+import { FcPositiveDynamic, FcTodoList, FcGraduationCap, FcAnswers } from 'react-icons/fc'
 import Link from 'next/link'
 import Image from 'next/image'
 import { useColorMode } from '@chakra-ui/react'
 import { Pages } from '@/types'
+
+import 잡봇 from '@/assets/잡봇.png'
+import 다크잡봇 from '@/assets/다크잡봇.png'
 
 const HOME_NAVIGATION: {
   icon: React.ReactNode
@@ -31,6 +34,11 @@ const HOME_NAVIGATION: {
     content: '지원서 피드백',
     href: 'feedback',
   },
+  {
+    icon: <FcAnswers />,
+    content: '지원서 소제목',
+    href: 'title',
+  },
 ]
 
 const Home = () => {
@@ -40,8 +48,8 @@ const Home = () => {
       <div className='flex h-[200px] items-center justify-center'>
         <div className='flex h-[130px] w-full justify-center pl-6'>
           <Image
-            priority={false}
-            src={colorMode === 'dark' ? '/잡봇.png' : '/다크잡봇.png'}
+            priority={true}
+            src={colorMode === 'dark' ? 잡봇 : 다크잡봇}
             alt='잡봇 로고'
             className='h-auto max-h-full w-auto max-w-full drop-shadow-lg'
             width={200}
@@ -49,10 +57,10 @@ const Home = () => {
           />
         </div>
       </div>
-      <div className='grid max-w-md grid-cols-4 justify-center gap-5 p-5 max-md:grid-cols-3 max-sm:grid-cols-4 max-[320px]:grid-cols-3'>
+      <div className='grid max-w-lg grid-cols-5 justify-center gap-5 p-5 max-md:grid-cols-4 max-sm:grid-cols-3 max-[320px]:grid-cols-2'>
         {HOME_NAVIGATION.map(({ content, icon, href }) => (
           <Link
-            className='flex w-fit cursor-pointer flex-col justify-center gap-2 transition-transform hover:-translate-y-1'
+            className='z-[1] flex w-fit cursor-pointer flex-col justify-center gap-2 transition-transform hover:-translate-y-1'
             href={'/' + href}
             key={href}
           >
