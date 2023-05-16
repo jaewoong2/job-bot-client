@@ -6,8 +6,7 @@ import Image from 'next/image'
 import { useColorMode } from '@chakra-ui/react'
 import { Pages } from '@/types'
 
-import 잡봇 from '@/assets/잡봇.png'
-import 다크잡봇 from '@/assets/다크잡봇.png'
+import { IMAGES } from '@/constants'
 
 const HOME_NAVIGATION: {
   icon: React.ReactNode
@@ -49,7 +48,7 @@ const Home = () => {
         <div className='flex h-[130px] w-full justify-center pl-6'>
           <Image
             priority={true}
-            src={colorMode === 'dark' ? 잡봇 : 다크잡봇}
+            src={colorMode === 'dark' ? IMAGES.잡봇 : IMAGES.다크잡봇}
             alt='잡봇 로고'
             className='h-auto max-h-full w-auto max-w-full drop-shadow-lg'
             width={200}
