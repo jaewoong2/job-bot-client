@@ -64,11 +64,57 @@ module.exports = {
             transform: 'translateY(-10px)',
           },
         },
+        'cloud-right': {
+          '0%': {
+            transform: 'translateX(-100%)',
+          },
+          '100%': {
+            transform: 'translateX(100%)',
+          },
+        },
+
+        'cloud-up-down': {
+          '0%': {
+            transform: 'translate(0px, 0px)',
+          },
+          '25%': {
+            transform: 'translate(-20px, 20px)',
+          },
+          '50%': {
+            transform: 'translate(-10px, 0px)',
+          },
+          '75%': {
+            transform: 'translate(-40px, 20px)',
+          },
+          '100%': {
+            transform: 'translate(0px, 0px)',
+          },
+        },
+
+        'cloud-up-down-reverse': {
+          '0%': {
+            transform: 'translate(0px, 0px)',
+          },
+          '25%': {
+            transform: 'translate(20px, 20px)',
+          },
+          '50%': {
+            transform: 'translate(10px, 0px)',
+          },
+          '75%': {
+            transform: 'translate(40px, 20px)',
+          },
+          '100%': {
+            transform: 'translate(0px, 0px)',
+          },
+        },
       },
       animation: {
         'fade-in-down': 'fade-in-down 0.5s ease-out',
         'fade-out-up': 'fade-out-up 0.5s ease-out',
         'fade-in-left': 'fade-in-left 0.5s ease-out',
+        cloud: 'cloud-up-down 10s linear infinite',
+        'cloud-reverse': 'cloud-up-down-reverse 10s linear infinite',
       },
       gridTemplateColumns: {
         main: '4fr 12fr 4fr',

@@ -9,6 +9,7 @@ import { temperatureContext } from '@/hooks/useTemperature'
 import useMounted from '@/hooks/useMounted'
 import { usePathname } from 'next/navigation'
 import Header from './blocks/Header'
+import Clouds from './atoms/Clouds'
 
 const Layout = ({ children }: PropsWithChildren) => {
   const pathName = usePathname()
@@ -28,11 +29,12 @@ const Layout = ({ children }: PropsWithChildren) => {
       <LeftSide temperature={temperature} setTemperature={setTemperature} />
       {/* Main */}
       <main
-        className={`h-fit  min-h-[calc(100vh)] w-full pt-16 ${
+        className={`relative h-fit min-h-[calc(100vh)] w-full pt-16 ${
           pathName === '/' ? 'flex justify-center' : 'lg:ml-[320px] lg:w-[calc(100%-550px)] '
         }`}
       >
         <temperatureContext.Provider value={{ temperature }}>{children}</temperatureContext.Provider>
+        {pathName === '/' && <Clouds />}
       </main>
       {/* Right SideBar */}
       <aside className='relative h-fit w-full max-lg:px-6 lg:fixed lg:right-0 lg:top-16 lg:z-50 lg:max-w-[250px] lg:px-6' />
