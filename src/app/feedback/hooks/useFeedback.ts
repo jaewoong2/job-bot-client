@@ -14,7 +14,7 @@ export const OPTIONS: OptionType[] = [
   { value: 'sentence expression', label: '문장 표현' },
 ]
 
-export const MINIMUM_TEXT_LENGTH = 400
+export const MINIMUM_TEXT_LENGTH = 200
 export const LIMIT_TEXT_LENGTH = 1000
 export const TOOLTIP = '피드백 받을 지원서를 자유롭게 작성 해주세요 🥳'
 export const LABEL = '지원서 내용'

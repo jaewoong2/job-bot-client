@@ -21,6 +21,7 @@ const options: OptionType[] = [
   { value: 'rating', label: '지원서 평가' },
   { value: 'feedback', label: '지원서 피드백' },
   { value: 'copilot', label: '지원서 봇' },
+  { value: 'title', label: '지원서 소제목' },
 ]
 
 const LeftSide = ({ temperature, setTemperature, isOnMenuBox }: Props) => {
