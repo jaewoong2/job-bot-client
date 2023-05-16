@@ -1,5 +1,5 @@
 export type Temperature = { temperature: number }
-export type Pages = 'write' | 'feedback' | 'rating' | 'copilot'
+export type Pages = 'write' | 'feedback' | 'rating' | 'copilot' | 'title'
 
 export type ChatGPTResponse = {
   role: string
@@ -30,5 +30,11 @@ export type Copilot = {
   title: string
   position: string
   content: string
+  temperature: number
+}
+
+export type Title = {
+  content: string
+  job: string
   temperature: number
 }
