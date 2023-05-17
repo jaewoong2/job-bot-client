@@ -3,13 +3,29 @@ const nextConfig = {
   output: 'export',
   distDir: 'dist',
   images: {
-    domains: ['ywnfqdpcmgtllkshgzsl.supabase.co'],
+    formats: ['image/avif', 'image/webp'],
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'ywnfqdpcmgtllkshgzsl.supabase.co',
+        port: '',
+        pathname: '/storage/v1/object/public/image/**',
+      },
+    ],
   },
 }
 
 const devConfig = {
   images: {
-    domains: ['ywnfqdpcmgtllkshgzsl.supabase.co'],
+    formats: ['image/avif', 'image/webp'],
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'ywnfqdpcmgtllkshgzsl.supabase.co',
+        port: '',
+        pathname: '/storage/v1/object/public/image/**',
+      },
+    ],
   },
   async rewrites() {
     return [
