@@ -2,9 +2,15 @@
 const nextConfig = {
   output: 'export',
   distDir: 'dist',
+  images: {
+    domains: ['ywnfqdpcmgtllkshgzsl.supabase.co'],
+  },
 }
 
 const devConfig = {
+  images: {
+    domains: ['ywnfqdpcmgtllkshgzsl.supabase.co'],
+  },
   async rewrites() {
     return [
       {
