@@ -2,10 +2,8 @@
 import React from 'react'
 import { FcPositiveDynamic, FcTodoList, FcGraduationCap, FcAnswers } from 'react-icons/fc'
 import Link from 'next/link'
-import Image from 'next/image'
 import { useColorMode } from '@chakra-ui/react'
 import { Pages } from '@/types'
-
 import { IMAGES } from '@/constants'
 
 const HOME_NAVIGATION: {
@@ -46,8 +44,7 @@ const Home = () => {
     <section className='0 flex w-full flex-col items-center gap-1'>
       <div className='flex h-[200px] items-center justify-center'>
         <div className='flex h-[130px] w-full justify-center pl-6'>
-          <Image
-            priority={true}
+          <img
             src={colorMode === 'dark' ? IMAGES.잡봇 : IMAGES.다크잡봇}
             alt='잡봇 로고'
             className='h-auto max-h-full w-auto max-w-full drop-shadow-lg'

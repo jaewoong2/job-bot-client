@@ -1,6 +1,5 @@
 import { IMAGES } from '@/constants'
 import { Tooltip } from '@chakra-ui/react'
-import Image from 'next/image'
 import React, { useState } from 'react'
 
 const Clouds = () => {
@@ -10,7 +9,7 @@ const Clouds = () => {
     <>
       <figure className='absolute left-5 top-1/2 z-0' onClick={() => setAnimation((prev) => !prev)}>
         <Tooltip label={`애니메이션 ${animation ? '제거' : '동작'}`}>
-          <Image
+          <img
             src={IMAGES.cloud}
             width={120}
             height={120}
@@ -24,7 +23,7 @@ const Clouds = () => {
       </figure>
       <figure className='absolute right-5 top-1/2 z-0 scale-x-[-1]' onClick={() => setAnimation((prev) => !prev)}>
         <Tooltip label={`애니메이션 ${animation ? '제거' : '동작'}`}>
-          <Image
+          <img
             src={IMAGES.cloud}
             width={120}
             height={120}

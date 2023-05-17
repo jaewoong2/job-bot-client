@@ -2,7 +2,6 @@ import React, { PropsWithChildren } from 'react'
 import { Button } from '@chakra-ui/react'
 import { RxArrowRight } from 'react-icons/rx'
 import Link, { LinkProps } from 'next/link'
-import Image from 'next/image'
 
 type Props = {
   title: string
@@ -32,7 +31,7 @@ const Card = ({
       <figure
         className={`flex h-[150px] w-auto items-center overflow-hidden rounded-t-xl bg-slate-200 ${imgClassName}`}
       >
-        <Image className='' src={imgSrc} alt={`카드 이미지: ${title}`} />
+        <img className='' src={imgSrc} alt={`카드 이미지: ${title}`} />
       </figure>
       <div className='flex flex-1 flex-col gap-2 p-3'>
         <h2 className='text-ellipsis text-[1.1em] font-semibold'>{title}</h2>

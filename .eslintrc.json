@@ -35,6 +35,7 @@
     "no-var": "error",
     "prefer-arrow-callback": "warn",
     "prefer-const": "error",
+    "@next/next/no-img-element": "off",
     "no-console": "error",
     "no-duplicate-case": "warn",
     "@typescript-eslint/no-unused-vars": "warn",
