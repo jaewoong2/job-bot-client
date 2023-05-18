@@ -20,10 +20,12 @@ export const metadata: Metadata = {
 }
 
 import './globals.css'
+import GoogleScripts from '@/lib/GoogleScripts'
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang='ko'>
+      <GoogleScripts />
       <body suppressHydrationWarning={true}>
         <Providers>
           <Layout>{children}</Layout>

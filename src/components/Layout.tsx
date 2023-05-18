@@ -9,7 +9,6 @@ import { temperatureContext } from '@/hooks/useTemperature'
 import useMounted from '@/hooks/useMounted'
 import { usePathname } from 'next/navigation'
 import Header from './blocks/Header'
-import Clouds from './atoms/Clouds'
 
 const Layout = ({ children }: PropsWithChildren) => {
   const pathName = usePathname()
@@ -34,7 +33,6 @@ const Layout = ({ children }: PropsWithChildren) => {
         }`}
       >
         <temperatureContext.Provider value={{ temperature }}>{children}</temperatureContext.Provider>
-        {pathName === '/' && <Clouds />}
       </main>
       {/* Right SideBar */}
       <aside className='relative h-fit w-full max-lg:px-6 lg:fixed lg:right-0 lg:top-16 lg:z-50 lg:max-w-[250px] lg:px-6' />
