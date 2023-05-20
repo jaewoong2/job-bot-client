@@ -84,6 +84,7 @@ const CopilotMain = () => {
               지원서의 질문의 내용을 작성해주세요.
             </Text>
             <Input
+              required
               value={title}
               onChange={handleChangeTitle}
               className='text-sm'
@@ -99,6 +100,7 @@ const CopilotMain = () => {
               어떤 직무의 지원서 인가요?
             </Text>
             <Input
+              required
               value={position}
               onChange={handleChangePosition}
               className='text-sm'

@@ -37,6 +37,7 @@ const TitleMain = () => {
           </Text>
           <Input
             value={job}
+            required
             onChange={handleChangeJob}
             className='text-sm'
             fontSize='sm'

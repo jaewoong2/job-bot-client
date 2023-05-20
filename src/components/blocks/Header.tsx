@@ -126,7 +126,7 @@ const Header = ({
         </Link>
         <div className='flex items-center gap-4'>
           {pathname !== '/' && (
-            <button aria-label='메뉴 버튼' type='button' className='flex lg:hidden' onClick={toggleMenuClick}>
+            <button aria-label='메뉴 버튼' type='button' className='flex lg:hidden' onClick={menu.toggleMenuClick}>
               <RxHamburgerMenu className='w-4 stroke-[1px] text-gray-300' />
             </button>
           )}
