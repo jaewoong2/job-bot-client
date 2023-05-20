@@ -35,7 +35,7 @@ const ModalBase = ({
     <Modal onClose={onClose} isOpen={isOpen} isCentered>
       <ModalOverlay />
       <ModalContent className={`dark:bg-darkBg-400 ${classsName}`}>
-        {title && <ModalHeader className='bg-darkBg-400'>{title}</ModalHeader>}
+        {title && <ModalHeader className='dark:bg-darkBg-400'>{title}</ModalHeader>}
         <ModalCloseButton />
         <ModalBody className={`dark:bg-darkBg-400 ${classsName}`}>{children}</ModalBody>
         <ModalFooter className={`dark:bg-darkBg-400 ${classsName}`}>

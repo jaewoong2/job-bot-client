@@ -28,7 +28,7 @@ const CopilotMain = () => {
   const { temperature } = useTemperature()
   const [isActive, setIsActive] = useState(false)
   const [isEditing, setIsEditing] = useState(false)
-  const debounceValue = useDebounce(content, 2500)
+  const debounceValue = useDebounce(content, 4000)
 
   const handleChange = useCallback((e: React.ChangeEvent<HTMLTextAreaElement>) => {
     setIsEditing(true)
@@ -77,11 +77,11 @@ const CopilotMain = () => {
   return (
     <form id='feedback-form'>
       <div className='w-full px-6 pt-3 text-sm'>
-        <div className='gap-10 xl:flex'>
-          <div className='xl:w-[400px]'>
-            <Text className='flex items-center gap-1 whitespace-nowrap py-2'>
+        <div className='flex flex-col gap-2'>
+          <div className='flex w-full flex-col gap-2'>
+            <Text className='flex items-center gap-1 whitespace-nowrap'>
               <QuestionIcon />
-              어떤 내용의 지원서 인가요?
+              지원서의 질문의 내용을 작성해주세요.
             </Text>
             <Input
               value={title}
@@ -89,12 +89,12 @@ const CopilotMain = () => {
               className='text-sm'
               fontSize='sm'
               borderColor='gray.300'
-              placeholder='지원동기, 성공경험, 성장배경'
+              placeholder='직무와 관련된 지원자의 역량과 직무에 대한 관심과 노력에 대해 기술해 주세요.'
               _dark={{ borderColor: 'gray.500' }}
             />
           </div>
-          <div>
-            <Text className='flex items-center gap-1 whitespace-nowrap py-2'>
+          <div className='flex w-full flex-col gap-2'>
+            <Text className='flex items-center gap-1 whitespace-nowrap'>
               <QuestionIcon />
               어떤 직무의 지원서 인가요?
             </Text>
