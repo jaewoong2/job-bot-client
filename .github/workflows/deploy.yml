@@ -47,6 +47,18 @@ jobs:
           --recursive \
           --region ap-northeast-2 \
           dist s3://job-bot.site
+      
+      - name: blar.html to blar
+        run: aws s3 rm s3://job-bot.site/ --recursive
+        # push(sync) the _next folder to S3
+        run: aws s3 sync ./dist/_next/ s3://job-bot.site/_next/
+        # find all .html files and remove their extension
+        run: for file in $(find ./dist -name "*.html"); do mv "$file" "${file%%.html}"; done
+        # push(sync) all the html files without extension to S3 and set the content type to text/html by excluding file extensions and chunck folder
+        run: aws s3 sync --content-type "text/html" --metadata-directive REPLACE ./dist/ s3://job-bot.site/ --exclude "*.jpg" --exclude "*.png" --exclude "*.jpeg" --exclude "_next/*" --exclude "*.svg"
+        # push(sync) all other kind of files such as images or SVGs
+        run: aws s3 sync ./dist/ s3://job-bot.site/ --exclude "*.*" --include "*.jpg" --include "*.png" --include "*.jpeg" --include "*.svg"
+
       - name: invalidate
         env:
           PATHS: './index.html'
