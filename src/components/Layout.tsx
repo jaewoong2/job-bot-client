@@ -8,7 +8,6 @@ import Footer from './atoms/Footer'
 import { temperatureContext } from '@/hooks/useTemperature'
 import useMounted from '@/hooks/useMounted'
 import { usePathname } from 'next/navigation'
-import Router from 'next/router'
 import Header from './blocks/Header'
 
 const Layout = ({ children }: PropsWithChildren) => {
@@ -17,7 +16,7 @@ const Layout = ({ children }: PropsWithChildren) => {
 
   const [temperature, setTemperature] = useState(50)
 
-  if (!isMounted && !Router.isReady) {
+  if (!isMounted) {
     return null
   }
 

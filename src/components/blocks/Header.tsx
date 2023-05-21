@@ -6,7 +6,6 @@ import { useColorMode } from '@chakra-ui/react'
 import LeftSide from './LeftSide'
 import { usePathname } from 'next/navigation'
 import { IMAGES } from '@/constants'
-import Router from 'next/router'
 
 const useMenu = () => {
   const [isMenuClick, setIsMenuClick] = useState(false)
@@ -100,10 +99,6 @@ const Header = ({ title, className, children, temperature, setTemperature, ...pr
   const menu = useMenu()
   const { colorMode, setColorMode } = useColorMode()
   const pathname = usePathname()
-
-  if (!Router.isReady) {
-    return null
-  }
 
   return (
     <>

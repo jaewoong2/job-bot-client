@@ -4,7 +4,6 @@ import Slider from '../atoms/Slider'
 import Option from '../atoms/Option'
 import { usePathname } from 'next/navigation'
 import { Pages } from '@/types'
-import Router from 'next/router'
 
 type OptionType = {
   value: Pages
@@ -34,10 +33,6 @@ const LeftSide = ({ temperature, setTemperature, isOnMenuBox }: Props) => {
     },
     [setTemperature]
   )
-
-  if (!Router.isReady) {
-    return null
-  }
 
   if (pathname === '/') return null
 
