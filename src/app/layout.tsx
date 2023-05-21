@@ -4,6 +4,8 @@ import Layout from '@/components/Layout'
 import './globals.css'
 import GoogleScripts from '@/lib/GoogleScripts'
 import Metatags from '@/components/atoms/Metatags'
+import { Metadata } from 'next'
+import { IMAGES } from '@/constants'
 
 export const metadata: Metadata = {
   title: '잡봇 | 지원서 봇',
