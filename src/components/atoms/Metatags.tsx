@@ -1,8 +1,10 @@
+import Head from 'next/head'
 import React from 'react'
 
 const Metatags = () => {
   return (
-    <head>
+    <Head>
+      <title>잡봇 | 지원서 봇</title>
       <meta name='description' content='생성 AI를 이용하여 지원서 작성을 도와줘요'></meta>
       <meta name='author' content='@jaewoong2'></meta>
       <meta name='keywords' content='잡봇, 지원서 봇, 생성AI, 지원서, 자소서'></meta>
@@ -25,7 +27,7 @@ const Metatags = () => {
         name='twitter:image'
         content='https://ywnfqdpcmgtllkshgzsl.supabase.co/storage/v1/object/public/image/dark-jobbot.png'
       ></meta>
-    </head>
+    </Head>
   )
 }
 

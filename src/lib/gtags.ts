@@ -1,6 +1,7 @@
 'use client'
 
 import { usePathname, useSearchParams } from 'next/navigation'
+import Router from 'next/router'
 import { useCallback, useEffect, useRef } from 'react'
 
 export const GA_TRACKING_ID = 'G-XG605Y4FZR'
@@ -34,7 +35,7 @@ export const useGtag = () => {
 
   useEffect(() => {
     // If REF has been changed, do the stuff
-    if (savedPathNameRef.current !== pathname) {
+    if (Router.isReady && searchParams && savedPathNameRef.current !== pathname) {
       const url = pathname + searchParams.toString()
       handleRouteChange(url)
       // Update REF

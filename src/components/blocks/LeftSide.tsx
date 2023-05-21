@@ -4,6 +4,7 @@ import Slider from '../atoms/Slider'
 import Option from '../atoms/Option'
 import { usePathname } from 'next/navigation'
 import { Pages } from '@/types'
+import Router from 'next/router'
 
 type OptionType = {
   value: Pages
@@ -34,6 +35,10 @@ const LeftSide = ({ temperature, setTemperature, isOnMenuBox }: Props) => {
     [setTemperature]
   )
 
+  if (!Router.isReady) {
+    return null
+  }
+
   if (pathname === '/') return null
 
   return (
@@ -48,7 +53,7 @@ const LeftSide = ({ temperature, setTemperature, isOnMenuBox }: Props) => {
             <div className='flex flex-col'>
               <span className='py-1 font-[300]'>어떤 것을 도와 드릴까요?</span>
               <Select
-                value={options[options.findIndex((option) => option.value === pathname.split('/')[1])]}
+                value={options[options.findIndex((option) => option.value === pathname?.split('/')[1])]}
                 options={options}
                 isMulti={false}
                 className='z-50'

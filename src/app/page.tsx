@@ -2,9 +2,8 @@
 import React from 'react'
 import { FcPositiveDynamic, FcTodoList, FcGraduationCap, FcAnswers } from 'react-icons/fc'
 import Link from 'next/link'
-import { useColorMode } from '@chakra-ui/react'
 import { Pages } from '@/types'
-import { IMAGES } from '@/constants'
+import LogoImage from '@/components/atoms/LogoImage'
 
 const HOME_NAVIGATION: {
   icon: React.ReactNode
@@ -39,20 +38,9 @@ const HOME_NAVIGATION: {
 ]
 
 const Home = () => {
-  const { colorMode } = useColorMode()
   return (
     <section className='0 flex w-full flex-col items-center gap-1'>
-      <div className='flex h-[200px] items-center justify-center'>
-        <div className='flex h-[130px] w-full justify-center pl-6'>
-          <img
-            src={colorMode === 'dark' ? IMAGES.잡봇 : IMAGES.다크잡봇}
-            alt='잡봇 로고'
-            className='h-auto max-h-full w-auto max-w-full drop-shadow-lg'
-            width={200}
-            height={200}
-          />
-        </div>
-      </div>
+      <LogoImage />
       <div className='grid max-w-lg grid-cols-5 justify-center gap-5 p-5 max-md:grid-cols-4 max-sm:grid-cols-3 max-[320px]:grid-cols-2'>
         {HOME_NAVIGATION.map(({ content, icon, href }) => (
           <Link
