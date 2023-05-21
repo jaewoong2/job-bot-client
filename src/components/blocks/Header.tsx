@@ -120,8 +120,8 @@ const Header = ({
         {/* LINK 로 바꿔야함 */}
         <Link href='/' className='rounded-lg p-2'>
           <div className='flex items-center gap-3'>
-            <img width={24} height={24} src={IMAGES.favicon} alt='잡봇 logo' />
-            <h1 className='logo rounded-md p-1 pb-1 font-bold hover:bg-slate-100 dark:hover:bg-darkBg-200'>{title}</h1>
+            <img width={24} height={24} src={IMAGES.small.favicon} alt='잡봇 logo' />
+            <h1 className='rounded-md p-1 pb-1 font-bold hover:bg-slate-100 dark:hover:bg-darkBg-200'>{title}</h1>
           </div>
         </Link>
         <div className='flex items-center gap-4'>

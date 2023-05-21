@@ -94,7 +94,7 @@ const FeedbackMain = () => {
           )}
         </div>
       </div>
-      <Result title={'STAR 기반 지원서 결과'} isOpen={isOpen} size={'lg'} onClose={onClose} onOpen={onOpen}>
+      <Result title={'지원서 피드백'} isOpen={isOpen} size={'lg'} onClose={onClose} onOpen={onOpen}>
         <ContentResult
           content={content?.content}
           error={error?.message}

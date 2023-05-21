@@ -3,6 +3,10 @@ import Layout from '@/components/Layout'
 
 import { Metadata } from 'next'
 
+import './globals.css'
+import GoogleScripts from '@/lib/GoogleScripts'
+import { IMAGES } from '@/constants'
+
 export const metadata: Metadata = {
   title: '잡봇 | 지원서 봇',
   description: '생성 AI를 이용하여 지원서 작성을 도와줘요',
@@ -10,18 +14,22 @@ export const metadata: Metadata = {
   openGraph: {
     title: '잡봇 | 지원서 봇',
     description: '생성 AI를 이용하여 지원서 작성을 도와줘요',
-    url: 'https://job-bot.site',
+    url: 'https://www.job-bot.site',
     siteName: '잡봇',
-    images: IMAGES.잡봇,
+    images: IMAGES.다크잡봇,
     locale: 'ko-KR',
     type: 'website',
   },
+  keywords: '잡봇, 지원서 봇, 생성AI, 지원서, 자소서',
+  twitter: {
+    card: 'summary',
+    title: '잡봇 | 지원서 봇',
+    site: 'https://www.job-bot.site',
+    images: IMAGES.다크잡봇,
+    description: '생성 AI를 이용하여 지원서 작성을 도와줘요',
+  },
   authors: { name: '@jaewoong2' },
 }
-
-import './globals.css'
-import GoogleScripts from '@/lib/GoogleScripts'
-import { IMAGES } from '@/constants'
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (

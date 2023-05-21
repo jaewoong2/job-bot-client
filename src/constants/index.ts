@@ -4,4 +4,7 @@ export const IMAGES = {
   cloud: 'https://ywnfqdpcmgtllkshgzsl.supabase.co/storage/v1/object/public/image/cloud.png',
   favicon: 'https://ywnfqdpcmgtllkshgzsl.supabase.co/storage/v1/object/public/image/favicon.png',
   example1: 'https://ywnfqdpcmgtllkshgzsl.supabase.co/storage/v1/object/public/image/example1.png',
-}
+  small: {
+    favicon: 'https://ywnfqdpcmgtllkshgzsl.supabase.co/storage/v1/object/public/image/small/favicon.png',
+  },
+} as const

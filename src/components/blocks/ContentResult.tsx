@@ -27,7 +27,7 @@ const ContentResult = ({ content, isError, isLoading, isSuccess, onClickButton, 
           답변 생성 중..
         </div>
       )}
-      {isSuccess && (
+      {!isLoading && isSuccess && (
         <div className='relative h-full min-h-[400px] w-full whitespace-pre-wrap rounded-md border p-3 py-8 dark:border-gray-500 dark:bg-darkBg-300'>
           {value}
           <div
