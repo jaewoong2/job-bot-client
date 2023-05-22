@@ -1,4 +1,4 @@
-![image](https://github.com/jaewoong2/job-bot-client/assets/63512217/e484d6a3-ae99-4691-b8ef-888727d3d7b7)
+![image](https://github.com/jaewoong2/job-bot-client/assets/63512217/394821d9-43ce-41ee-a1db-9e5582cd95ab)
 
 # 잡봇
 
