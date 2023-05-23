@@ -1,5 +1,5 @@
-import fs from 'fs'
-
+/* eslint-disable @typescript-eslint/no-var-requires */
+const fs = require('fs')
 const headTag = `
     <meta name='description' content='생성 AI를 이용하여 지원서 작성을 도와줘요'>
     </meta>
@@ -37,7 +37,7 @@ const headTag = `
     </meta>
 `
 
-const htmlFile = 'index.html'
+const htmlFile = './dist/index.html'
 
 // html 파일을 읽습니다.
 const html = fs.readFileSync(htmlFile, 'utf8')

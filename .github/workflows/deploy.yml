@@ -38,17 +38,6 @@ jobs:
       - name: Build # project build
         run: yarn build
 
-      - uses: actions/checkout@v2
-
-      - name: Install Node.js
-        run: sudo apt-get install nodejs
-
-      - name: Install the required modules
-        run: npm install
-
-      - name: Insert code into head
-        run: node insert-code.js
-
       - name: Deploy
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}

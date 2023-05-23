@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build && next export",
+    "build": "next build && next export && node ./dist/insert-metadata.js",
     "start": "next start",
     "postbuild": "next-sitemap",
     "lint": "next lint"
