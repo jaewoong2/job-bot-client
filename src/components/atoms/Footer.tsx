@@ -25,7 +25,7 @@ const Footer = () => {
           <div className='w-full'>
             <a href='https://open.kakao.com/o/gySaOwlf' className='grid h-full w-full px-3'>
               <div className='grid h-full w-96 grid-cols-2 items-center rounded-2xl bg-slate-200 shadow-lg dark:bg-darkBg-400 dark:shadow-inner dark:shadow-darkBg-200 max-md:grid-cols-1 max-sm:w-full'>
-                <h1 className='w-full px-4 text-lg font-bold dark:text-white'>잡다 공식 오픈채팅</h1>
+                <h1 className='w-full px-4 text-lg font-bold dark:text-white'>잡봇 공식 오픈채팅</h1>
                 <div className='flex h-full max-h-24 w-auto items-center justify-center py-5 max-sm:hidden'>
                   <img
                     src={IMAGES.favicon}
